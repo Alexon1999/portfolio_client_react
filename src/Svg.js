@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { motion } from 'framer-motion';
-
 const Svg = () => {
   const [show, setShow] = useState(false);
 

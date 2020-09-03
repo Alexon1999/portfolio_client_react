@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import './App.css';
+import React, { useEffect } from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import axios from './axios/axios';
 
 import Loader from './Loader';
 import Navbar from './Navbar';
@@ -11,20 +9,14 @@ import Projects from './Projects';
 import Contact from './Contact';
 import Footer from './Footer';
 import About from './About';
+import ProjectDetail from './ProjectDetail';
+// import useDatabase from './hooks/useDatabase';
 
 function App() {
-  const [data, setData] = useState(null);
+  // const [category, setCategory] = useState('tous');
+  // const data = useDatabase(category);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get('/projects');
-        setData(data);
-      } catch (err) {
-        console.log(err.response.data?.msg);
-      }
-    };
-
     const loader = () => {
       const navbar = document.getElementById('navbar');
       const loader = document.getElementById('loader');
@@ -36,8 +28,6 @@ function App() {
       navbar.classList.add('show');
       loader.classList.add('finished');
     };
-
-    fetchData();
 
     window.addEventListener('load', loader);
 
@@ -56,12 +46,13 @@ function App() {
           <Route exact path='/'>
             <div className='container'>
               <Home />
-              <Projects data={data} />
+              <Projects />
             </div>
           </Route>
 
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/about' component={About} />
+          <Route exact path='/project/:id' component={ProjectDetail} />
         </Switch>
 
         {/* <Contact /> */}

@@ -58,12 +58,13 @@ const Footer = () => {
 
     upBtn.current.addEventListener('click', ScrollUpBtn);
 
+    const up = upBtn.current;
     return () => {
       window.removeEventListener('touchmove', throttle);
       window.removeEventListener('wheel', throttle);
-      upBtn.current.removeEventListener('click', ScrollUpBtn);
+      up && up.removeEventListener('click', ScrollUpBtn);
     };
-  });
+  }, []);
 
   return (
     <>
@@ -76,19 +77,34 @@ const Footer = () => {
           <a href="mailto:alexon1999@gmail.com?subject=Plus d'information">
             <i className='fas fa-envelope'></i>
           </a>
-          <a target='_blank' href=''>
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://google.Com'>
             <i className='fas fa-phone-alt'></i>
           </a>
-          <a target='_blank' href=''>
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://google.Com'>
             <i className='fab fa-linkedin-in'></i>
           </a>
-          <a target='_blank' href=''>
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://google.Com'>
             <i className='fab fa-facebook'></i>
           </a>
-          <a target='_blank' href=''>
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://google.Com'>
             <i className='fab fa-instagram'></i>
           </a>
-          <a target='_blank' href=''>
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://google.Com'>
             <i className='fab fa-github'></i>
           </a>
         </div>

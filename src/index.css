@@ -11,6 +11,7 @@
   padding: 0.2rem 1rem 1rem;
   width: 95%;
 }
+
 img {
   width: 100%;
 }
@@ -45,6 +46,7 @@ img {
 }
 .btn_primary:hover {
   background-color: #123fca;
+  color: #fff;
 }
 .btn_secondary {
   text-align: center;
@@ -71,7 +73,7 @@ img {
   font-size: 1rem;
 }
 .btn_block {
-  display: block;
+  display: block !important;
   border: 0;
   text-align: center;
   width: 100%;
@@ -85,6 +87,7 @@ img {
   right: 1rem;
   bottom: 1rem;
   color: #264aca;
+  z-index: 999;
 }
 * {
   margin: 0;
@@ -223,7 +226,7 @@ body.overflow {
   background-color: #33393b;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 #navbar.show .img-container {
   height: 30px;
@@ -240,10 +243,23 @@ body.overflow {
   width: 50%;
   justify-content: space-around;
 }
-#navbar.show .container i.fas {
+
+#navbar.show .container nav > a {
+  text-decoration: none;
+}
+
+#navbar.show .container nav > a:hover {
+  color: #fff;
+}
+
+#navbar.show .container > nav.nav-mobile {
   display: none;
   color: #dbdada;
 }
+/* #navbar.show .container i.fas {
+  display: none;
+  color: #dbdada;
+} */
 header {
   min-height: 5vh;
   display: flex;
@@ -254,6 +270,11 @@ header .img-container {
   height: 30px;
   width: 150px;
 }
+
+header .img-container img {
+  z-index: 99;
+}
+
 header nav {
   display: flex;
   width: 50%;
@@ -321,20 +342,29 @@ section.home_section .mobile_container {
 }
 .work_section-container .work_menu {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  margin: 1rem 0 2rem;
+  margin: 2.5rem 0 2.5rem;
   font-size: 1rem;
   text-align: center;
 }
 .work_section-container .work_menu a {
   cursor: pointer;
 }
+.work_section-container .work_menu a:hover {
+  color: dodgerblue;
+}
+.work_section-container .my_works {
+  display: flex;
+}
+
 .work_section-container .my_works {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.5rem;
   margin-bottom: 1rem;
 }
+
 .work_section-container .my_works .card {
   padding: 1rem;
   border-radius: 1rem;
@@ -346,11 +376,11 @@ section.home_section .mobile_container {
   align-items: center;
   justify-content: center;
   transform: translateY(0px);
-  transition: all 200ms ease;
   text-align: center;
   overflow: hidden;
   cursor: pointer;
 }
+
 .work_section-container .my_works .card .img-container {
   margin-bottom: 16px;
 }
@@ -360,6 +390,7 @@ section.home_section .mobile_container {
 .work_section-container .my_works .card:hover {
   box-shadow: 0px 6px 31px -2px rgba(0, 0, 0, 0.1);
   transform: translateY(-10px);
+  transition: transform 0.35s ease;
 }
 .footer {
   height: 11vh;
@@ -477,7 +508,10 @@ section.home_section .mobile_container {
   #navbar.show .container nav {
     display: none;
   }
-  #navbar.show .container i.fas {
+  /* #navbar.show .container i.fas {
+    display: block;
+  } */
+  #navbar.show .container > nav.nav-mobile {
     display: block;
   }
   .footer .footer_content h1 {
@@ -563,6 +597,10 @@ section.home_section .mobile_container {
   .calendar {
     display: none;
   }
+
+  .work_section-container .work_menu {
+    margin: 1rem 0 2rem;
+  }
 }
 
 @media (max-width: 650px) {
@@ -638,7 +676,19 @@ section.home_section .mobile_container {
   }
 }
 
+@media (max-height: 731px) {
+  section.home_section .section_content {
+    margin-top: 1.6rem;
+  }
+}
+@media (max-height: 823px) {
+  section.home_section .section_content {
+    margin-top: 1.3rem;
+  }
+}
+
 .calendar {
+  cursor: pointer;
   border: none;
   width: 100%;
   margin: 0 0 1rem;
@@ -648,16 +698,26 @@ section.home_section .mobile_container {
   /* background-image: linear-gradient(#231b69, #443d9b); */
   background-size: 185%;
   background-position: left;
-  box-shadow: 0 10px 65.9px -68px rgba(0, 0, 0, -0.053),
+  /* box-shadow: 0 10px 65.9px -68px rgba(0, 0, 0, -0.053),
     0 13px 119.7px -68px rgba(0, 0, 0, -0.049),
     0 18.2px 162.6px -68px rgba(0, 0, 0, 0.029),
-    0 27px 337px -68px rgba(0, 0, 0, 0.31);
+    0 27px 337px -68px rgba(0, 0, 0, 0.31); */
 
   transition: background-position 1s ease;
 }
 
 .calendar:hover {
   background-position: center;
+}
+
+#projects
+  > div
+  > div.calendar
+  > div.position-relative
+  > div
+  > div.contrib-footer.clearfix.mt-1.mx-3.px-3.pb-1
+  > div.float-left.text-gray {
+  color: #eee;
 }
 
 .calendar a {
@@ -669,3 +729,106 @@ section.home_section .mobile_container {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.projectDetail {
+  margin: auto;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projectDetail__header {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projectDetail__heading {
+  letter-spacing: 3px;
+  color: #524f4f;
+  font-size: 1.6rem;
+}
+
+.projectDetail__Image {
+  display: block;
+  width: 85%;
+  /* max-height: 600px; */
+  min-width: 60%;
+  object-fit: contain;
+  margin: 1.5rem 0;
+}
+
+.projectDetail__Description {
+  padding: 1rem;
+  text-align: center;
+}
+
+.projectDetail__Description > h3 {
+  font-size: 1.5rem;
+  color: #524f4f;
+}
+
+.projectDetail__Description > h3,
+.projectDetail__Description > p {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.projectDetail__Description > blockquote > p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.projectDetail__Description img {
+  width: 100px;
+  object-fit: contain;
+  margin-left: 1rem;
+}
+
+.projectDetail__Description > blockquote > p > img {
+  width: 100px;
+  object-fit: contain;
+  margin-left: 1rem;
+}
+
+.projectDetail__Description > blockquote > ul,
+.projectDetail__Description > blockquote > ol {
+  margin: 1rem 0;
+}
+
+.projectDetail__Description > blockquote > ul > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.projectDetail__Description > blockquote > ol {
+  width: fit-content;
+  margin: auto;
+}
+
+.projectDetail__buttons {
+  display: flex;
+}
+
+.projectDetail__buttons > button {
+  margin: 1rem;
+}
+
+.collapseBtn {
+  color: rgb(245, 245, 245);
+}
+
+@media (max-width: 600px) {
+  .projectDetail__Image {
+    width: 100%;
+  }
+}
+@media (max-width: 630px) {
+  .projectDetail__buttons {
+    flex-direction: column;
+  }
+}

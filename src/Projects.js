@@ -1,12 +1,19 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 import Svg from './Svg';
+import Project from './Project';
 
+import { useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import GithubCalendar from 'github-calendar';
+import FlipMove from 'react-flip-move';
+import useDatabase from './hooks/useDatabase';
 
-const Projects = ({ data }) => {
+const Projects = () => {
   const heading = useRef(null);
+  const history = useHistory();
+  const [category, setCategory] = useState('tous');
+  const data = useDatabase(category);
 
   useEffect(() => {
     const scrollHead = () => {
@@ -22,6 +29,7 @@ const Projects = ({ data }) => {
     window.addEventListener('scroll', scrollHead);
 
     const gihubText = async () => {
+      // push calendar to the div with class of calendar
       await GithubCalendar('.calendar', 'Alexon1999', {
         responsive: true,
       });
@@ -34,7 +42,9 @@ const Projects = ({ data }) => {
     };
   }, []);
 
-  const handleClick = (e) => {
+  const handleClick = (type) => (e) => {
+    e.preventDefault();
+
     const btns = document.querySelectorAll('.work_menu > .btn');
     btns.forEach((b) => {
       b.classList.remove('btn_primary');
@@ -43,6 +53,8 @@ const Projects = ({ data }) => {
     if (!e.target.classList.contains('btn_primary')) {
       e.target.classList.add('btn_primary');
     }
+
+    setCategory(type);
   };
 
   const goToGithub = (e) => {
@@ -59,6 +71,10 @@ const Projects = ({ data }) => {
       // + New tab
       window.open(a.href, '_blank');
     }
+  };
+
+  const getProjectDetail = (id) => () => {
+    history.push(`/project/${id}`);
   };
 
   return (
@@ -80,34 +96,48 @@ const Projects = ({ data }) => {
           className='calendar'></motion.div>
 
         <div className='work_menu'>
-          <a onClick={handleClick} className='btn work_btn btn_primary'>
+          <motion.a
+            onClick={handleClick('tous')}
+            className='btn work_btn btn_primary'>
             Tous
-          </a>
-          <a onClick={handleClick} className='btn work_btn'>
+          </motion.a>
+
+          <motion.a onClick={handleClick('react')} className='btn work_btn'>
+            React
+          </motion.a>
+
+          <motion.a onClick={handleClick('front-end')} className='btn work_btn'>
+            Front-end
+          </motion.a>
+
+          <motion.a onClick={handleClick('back-end')} className='btn work_btn'>
+            Back-end
+          </motion.a>
+
+          <motion.a onClick={handleClick('fullstack')} className='btn work_btn'>
+            Fullstack
+          </motion.a>
+
+          <motion.a onClick={handleClick('UI-design')} className='btn work_btn'>
             Web designs
-          </a>
-          <a onClick={handleClick} className='btn work_btn'>
-            Front-end developpement
-          </a>
-          <a onClick={handleClick} className='btn work_btn'>
-            Back-end developpement
-          </a>
+          </motion.a>
+          <motion.a onClick={handleClick('autres')} className='btn work_btn'>
+            Autres
+          </motion.a>
         </div>
 
-        <div className='my_works'>
+        {/* <div className='my_works'> */}
+        <FlipMove className='my_works'>
           {data?.map((project) => (
-            <motion.div layout className='card'>
-              <div className='img-container'>
-                <img src='./imgs/finish_task2.png' alt='' />
-              </div>
-              <div className='card-content'>
-                <h1>{project.langages}</h1>
-                {project.description && <p>Client Wensite Design</p>}
-              </div>
-            </motion.div>
+            <Project
+              key={project._id}
+              project={project}
+              getProjectDetail={getProjectDetail}
+            />
           ))}
+        </FlipMove>
 
-          {/* <div className='card'>
+        {/* <div className='card'>
             <div className='img-container'>
               <img src={'./imgs/rsz_1finish_task2.png'} />
             </div>
@@ -116,7 +146,7 @@ const Projects = ({ data }) => {
               <p>Client Wensite Design</p>
             </div>
           </div> */}
-        </div>
+        {/* </div> */}
       </div>
     </section>
   );

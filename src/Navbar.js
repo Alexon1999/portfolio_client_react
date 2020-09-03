@@ -4,6 +4,7 @@ import logo from './imgs/logo.png';
 
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import NavMobile from './mobile/NavMobile';
 
 const Navbar = () => {
   const nav = useRef(null);
@@ -37,7 +38,7 @@ const Navbar = () => {
     const href = e.target.hash; // '#projects'
     const offsetTop = document.querySelector(href).offsetTop;
 
-    console.log({ href, offsetTop });
+    // console.log({ href, offsetTop });
 
     window.scroll({
       top: offsetTop,
@@ -85,7 +86,8 @@ const Navbar = () => {
           </Link>
         </nav>
 
-        <i className='fas fa-bars fa-2x'></i>
+        <NavMobile />
+        {/* <i className='fas fa-bars fa-2x'></i> */}
       </div>
     </nav>
   );

@@ -51,7 +51,7 @@ const Home = () => {
             href='#projects'
             onClick={handleHlick}
             className='btn btn_primary'>
-            Reagarder mes travails
+            Reagardez mes travails
           </motion.a>
 
           <motion.a
