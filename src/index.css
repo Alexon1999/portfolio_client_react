@@ -738,6 +738,12 @@ section.home_section .mobile_container {
   align-items: center;
 }
 
+.projectDetail__badges {
+  min-width: 220px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .projectDetail__header {
   width: 50%;
   display: flex;
@@ -810,6 +816,51 @@ section.home_section .mobile_container {
   margin: auto;
 }
 
+.projectDetail__langages {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem;
+}
+
+.projectDetail__langagesHeading {
+  font-size: 1.1rem;
+}
+
+.projectDetail__langagesIcones {
+  margin-left: 1rem;
+}
+
+.projectDetail__BackendsIcones img,
+.projectDetail__langagesIcones img {
+  width: 80px;
+  height: 50px;
+  object-fit: contain;
+  margin-left: 0.75rem;
+}
+
+.projectDetail__container {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.fa-html5 {
+  color: rgb(236, 159, 14);
+}
+.fa-css3-alt {
+  color: rgb(37, 111, 185);
+}
+
+.fa-js {
+  color: rgb(238, 192, 40);
+}
+
+.projectDetail__langagesIcones i {
+  margin: 0 0.5rem;
+}
+
 .projectDetail__buttons {
   display: flex;
 }
@@ -822,13 +873,33 @@ section.home_section .mobile_container {
   color: rgb(245, 245, 245);
 }
 
+@media (max-width: 1361px) {
+  .projectDetail__header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 787px) {
+  .projectDetail__header {
+    width: 100%;
+  }
+}
+@media (max-width: 661px) {
+  .projectDetail__buttons {
+    flex-direction: column;
+  }
+
+  .projectDetail__buttons button.MuiButtonBase-root {
+    width: fit-content;
+    margin: auto;
+  }
+}
 @media (max-width: 600px) {
   .projectDetail__Image {
     width: 100%;
   }
-}
-@media (max-width: 630px) {
-  .projectDetail__buttons {
-    flex-direction: column;
+
+  .projectDetail__langagesIcones {
+    font-size: 0.75rem;
   }
 }
