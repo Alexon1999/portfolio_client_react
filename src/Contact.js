@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Video from './imgs//contact_video.mp4';
 import axios from './axios/axios';
 
 const baseUrl = 'https://my-portfolio-alexon.herokuapp.com/'; //+ http://localhost:5000
+
+import isValideForm from './validateForm';
 
 import {
   Button,
@@ -12,17 +14,79 @@ import {
   // Input,
   // FormHelperText,
 } from '@material-ui/core';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 const Contact = () => {
-  const [contactFields, setContactFields] = useState({
-    name: '',
-    email: '',
-    message: '',
+  // const [contactFields, setContactFields] = useState({
+  //   name: '',
+  //   email: '',
+  //   message: '',
+  // });
+
+  const contactForm = useSelector((state) => state.contactForm);
+  const { name, email, message } = contactForm;
+
+  const dispatch = useDispatch();
+
+  const [isValide, setIsValide] = useState({
+    name: name.valide,
+    email: email.valide,
+    message: message.valide,
   });
+  const stockValide = useRef(isValide);
+
+  const [valideForm, setValideForm] = useState(false);
 
   const handleChange = (e) => {
-    setContactFields({ ...contactFields, [e.target.name]: e.target.value });
+    isValideForm(
+      e.target.name,
+      e.target.value,
+      setIsValide,
+      isValide,
+      stockValide
+    );
+
+    // setContactFields({ ...contactFields, [e.target.name]: e.target.value });
+    dispatch({ type: e.target.name, payload: e.target.value });
   };
+
+  useEffect(() => {
+    setIsValide({
+      email: email.valide,
+      name: name.valide,
+      message: message.valide,
+    });
+
+    stockValide.current = isValide;
+
+    validateForm(isValide);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      dispatch({
+        type: 'saveValide',
+        payload: {
+          email: { valide: stockValide.current.email },
+          name: { valide: stockValide.current.name },
+          message: { valide: stockValide.current.message },
+        },
+      });
+    };
+  }, []);
+
+  const validateForm = (form) => {
+    const filter = Object.values(form).filter((l) => !!l);
+    filter.length === Object.values(form).length
+      ? setValideForm(true)
+      : setValideForm(false);
+  };
+
+  useEffect(() => {
+    validateForm(isValide);
+  }, [isValide]);
 
   const handlSubmit = async (e) => {
     e.preventDefault();
@@ -31,63 +95,113 @@ const Contact = () => {
         'Content-Type': 'application/json',
       },
     };
-    await axios.post(baseUrl + 'post-email', contactFields, opt);
 
-    setContactFields({
-      name: '',
-      email: '',
-      message: '',
+    await axios.post(
+      baseUrl + 'post-email',
+      {
+        email: email.value,
+        name: name.value,
+        message: message.value,
+      },
+      opt
+    );
+
+    // setContactFields({
+    //   name: '',
+    //   email: '',
+    //   message: '',
+    // });
+
+    dispatch({
+      type: 'submited',
     });
+
+    setIsValide({
+      name: false,
+      email: false,
+      message: false,
+    });
+
+    stockValide.current = {
+      name: false,
+      email: false,
+      message: false,
+    };
   };
 
   return (
     <section className='form_submission'>
       <div className='container'>
         <form method='post' onSubmit={handlSubmit} className='form'>
-          <div class='field'>
-            <p class='control has-icons-left has-icons-right'>
+          <div className='field'>
+            <p className='control has-icons-left has-icons-right'>
               <input
-                class='input'
+                className='input'
                 name='name'
                 type='text'
-                value={contactFields.name}
+                required
+                // value={contactFields.name}
+                value={name.value}
                 onChange={handleChange}
                 placeholder='Votre Nom'
               />
-              <span class='icon is-small is-left'>
-                <i class='fas fa-user'></i>
+              <span className='icon is-small is-left'>
+                <i
+                  className='fas fa-user'
+                  style={{
+                    color: isValide.name ? '#00d1b2' : 'red',
+                  }}></i>
               </span>
-              <span class='icon is-small is-right'>
-                <i class='fas fa-check'></i>
+              <span className='icon is-small is-right'>
+                <i
+                  className='fas fa-check'
+                  style={{
+                    color: isValide.name ? '#00d1b2' : 'red',
+                  }}></i>
               </span>
             </p>
           </div>
-          <div class='field'>
-            <p class='control has-icons-left has-icons-right'>
+          <div className='field'>
+            <p className='control has-icons-left has-icons-right'>
               <input
-                class='input'
+                className='input'
                 type='email'
                 name='email'
-                value={contactFields.email}
+                required
+                // value={contactFields.email}
+                value={email.value}
                 onChange={handleChange}
                 placeholder='Email'
               />
-              <span class='icon is-small is-left'>
-                <i class='fas fa-envelope'></i>
+              <span className='icon is-small is-left'>
+                <i
+                  className='fas fa-envelope'
+                  style={{
+                    color: isValide.email ? '#00d1b2' : 'red',
+                  }}></i>
               </span>
-              <span class='icon is-small is-right'>
-                <i class='fas fa-check'></i>
+              <span className='icon is-small is-right'>
+                <i
+                  className='fas fa-check'
+                  style={{
+                    color: isValide.email ? '#00d1b2' : 'red',
+                  }}></i>
               </span>
             </p>
           </div>
 
-          <div class='field'>
-            <div class='control'>
+          <div className='field'>
+            <div className='control'>
               <textarea
                 name='message'
-                value={contactFields.message}
+                style={{
+                  borderColor: isValide.message ? '#00d1b2' : 'red',
+                }}
+                required
+                // value={contactFields.message}
+                value={message.value}
                 onChange={handleChange}
-                class='textarea is-info'
+                className='textarea is-info'
                 placeholder='Message'></textarea>
             </div>
           </div>
@@ -100,13 +214,26 @@ const Contact = () => {
             </FormHelperText>
           </FormControl> */}
 
-          <Button
-            type='submit'
-            classNAme='btn btnblock'
-            variant='contained'
-            color='secondary'>
-            Envoyer
-          </Button>
+          <AnimatePresence>
+            {valideForm && (
+              <motion.button
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 10, opacity: 1 }}
+                transition={{ type: 'spring', duration: 1, delay: 0.2 }}
+                exit={{ y: 50, opacity: 0, ease: 'easeIn' }}
+                disabled={!valideForm}
+                type='submit'
+                style={{
+                  borderRadius: 5,
+                  display: 'block',
+                  margin: 'auto',
+                  background: '#00d1b2',
+                }}
+                className='btn btn_primary'>
+                Envoyer
+              </motion.button>
+            )}
+          </AnimatePresence>
         </form>
         <div className='video_container'>
           <video src={Video} autoPlay loop className='video' id='video'></video>
