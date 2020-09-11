@@ -17,7 +17,7 @@ const Footer = () => {
       };
     }
 
-    window.addEventListener(
+    document.addEventListener(
       'wheel',
       throttle((e) => {
         // console.log(e.deltaY);
@@ -33,7 +33,7 @@ const Footer = () => {
         }
       }, 800)
     );
-    window.addEventListener(
+    document.addEventListener(
       'touchmove',
       throttle((e) => {
         if (e.deltaY < 0) {

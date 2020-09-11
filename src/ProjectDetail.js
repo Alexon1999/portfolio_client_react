@@ -115,7 +115,7 @@ const Project = () => {
   };
 
   return (
-    <div className='projectDetail' style={{ padding: '3rem' }}>
+    <div className='projectDetail'>
       {data && (
         <>
           <div className='projectDetail__header'>
@@ -162,7 +162,7 @@ const Project = () => {
                     if (type === 'itag') {
                       return <i key={name} className={src} alt={name} />;
                     } else {
-                      return <img src={src} alt={name} />;
+                      return <img src={src} alt={name} key={name} />;
                     }
                   })}
                 </div>
@@ -172,7 +172,7 @@ const Project = () => {
                     if (type === 'itag') {
                       return <i key={name} className={src} alt={name} />;
                     } else {
-                      return <img src={src} alt={name} />;
+                      return <img src={src} alt={name} key={name} />;
                     }
                   })}
                 </div>

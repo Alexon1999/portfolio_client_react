@@ -5,7 +5,7 @@ import axios from './axios/axios';
 
 const baseUrl = 'https://my-portfolio-alexon.herokuapp.com/'; //+ http://localhost:5000
 
-import isValideForm from './validateForm';
+import isValideForm from './functions/validateForm';
 
 import {
   Button,

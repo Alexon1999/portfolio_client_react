@@ -63,7 +63,11 @@ const Navbar = () => {
 
         <nav>
           {location.pathname === '/' && (
-            <a href='#projects' onClick={handleHlick} className='btn_work'>
+            <a
+              href='#projects'
+              onClick={handleHlick}
+              // className='btn_work'
+              className='btn btn_third'>
               Travail
             </a>
           )}
