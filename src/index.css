@@ -1,9 +1,15 @@
 @import 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+body * {
+  transition: background 0.3s;
+}
+
 .container {
   max-width: 1100px;
   overflow: hidden;
@@ -241,6 +247,7 @@ body.overflow {
   height: 30px;
   width: 150px;
 }
+
 #navbar.show .container {
   padding: 1rem;
   display: flex;
@@ -252,6 +259,11 @@ body.overflow {
   width: 50%;
   justify-content: space-around;
 }
+
+/* #navbar.show .container a > img {
+  width: 150px;
+  object-fit: contain;
+} */
 
 #navbar.show .container nav > a {
   text-decoration: none;
@@ -403,7 +415,7 @@ section.home_section .mobile_container {
   transition: transform 0.35s ease;
 }
 .footer {
-  height: 8vh;
+  height: 9vh;
   background-color: #33393b;
   color: #fff;
   display: flex;
@@ -442,7 +454,7 @@ section.home_section .mobile_container {
   grid-template-columns: 3.4fr 2fr;
   align-items: center;
   justify-content: center;
-  height: 82vh;
+  height: 83vh;
   width: 100%;
 }
 .form_submission .container .form {
@@ -643,6 +655,17 @@ section.home_section .mobile_container {
   }
 }
 
+@media (min-height: 720px) {
+  .form_submission .container {
+    height: 83vh;
+  }
+}
+@media (min-height: 900px) {
+  .form_submission .container {
+    height: 85vh;
+  }
+}
+
 @media (max-height: 568px) {
   section.home_section .section_content {
     margin-top: 2.5rem;
@@ -750,17 +773,17 @@ section.home_section .mobile_container {
   padding: 2.5rem 1rem;
 }
 
-.projectDetail__badges {
-  min-width: 220px;
-  display: flex;
-  justify-content: space-between;
-}
-
 .projectDetail__header {
   width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.projectDetail__badges {
+  min-width: 220px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .projectDetail__heading {
@@ -921,6 +944,14 @@ section.home_section .mobile_container {
   .projectDetail__langagesIcones {
     font-size: 0.75rem;
   }
+
+  .form_submission .container .form {
+    padding: 0.5rem;
+  }
+
+  /* .footer .footer_content h1 {
+    font-size: 0.5rem;
+  } */
 
   .upBtn {
     font-size: 3.2rem;

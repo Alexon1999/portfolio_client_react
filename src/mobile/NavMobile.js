@@ -12,7 +12,7 @@ const sidebar = {
   open: (height = 1000) => ({
     // +  clip path:       taille            ||  x  || y
     clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-    position: 'fixed',
+    // position: 'fixed',
     transition: {
       type: 'spring',
       stiffness: 20,
@@ -22,7 +22,7 @@ const sidebar = {
   closed: {
     // + clip path: taille || x pos || y pos
     clipPath: 'circle(50px at 300px -50px)',
-    position: 'absolute',
+    // position: 'absolute',
     transition: {
       delay: 0.5,
       type: 'spring',

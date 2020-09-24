@@ -54,7 +54,8 @@ const Navbar = () => {
             <motion.img
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ ease: 'easeIn', duration: 1 }}
+              whileHover={{ scale: 1.1 }}
+              transition={{ ease: 'easeIn', duration: 0.4 }}
               src={logo}
               alt=''
             />

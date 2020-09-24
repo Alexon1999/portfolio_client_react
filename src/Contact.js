@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import Video from './imgs//contact_video.mp4';
 import axios from './axios/axios';
@@ -6,6 +7,7 @@ import axios from './axios/axios';
 const baseUrl = 'https://my-portfolio-alexon.herokuapp.com/'; //+ http://localhost:5000
 
 import isValideForm from './functions/validateForm';
+import { addToAlert, removeFromAlert } from './redux/actionCreator';
 
 import {
   Button,
@@ -96,37 +98,52 @@ const Contact = () => {
       },
     };
 
-    await axios.post(
-      baseUrl + 'post-email',
-      {
-        email: email.value,
-        name: name.value,
-        message: message.value,
-      },
-      opt
-    );
+    const AlertId = uuidv4();
+
+    try {
+      const { data } = await axios.post(
+        baseUrl + 'post-email',
+        {
+          email: email.value,
+          name: name.value,
+          message: message.value,
+        },
+        opt
+      );
+
+      dispatch({
+        type: 'submited',
+      });
+
+      dispatch(addToAlert(data, AlertId));
+
+      setIsValide({
+        name: false,
+        email: false,
+        message: false,
+      });
+
+      stockValide.current = {
+        name: false,
+        email: false,
+        message: false,
+      };
+    } catch (err) {
+      dispatch(addToAlert(err.response.data));
+    }
+
+    setTimeout(() => {
+      dispatch({
+        type: 'REMOVE_TO_ALERT',
+        payload: AlertId,
+      });
+    }, 5000);
 
     // setContactFields({
     //   name: '',
     //   email: '',
     //   message: '',
     // });
-
-    dispatch({
-      type: 'submited',
-    });
-
-    setIsValide({
-      name: false,
-      email: false,
-      message: false,
-    });
-
-    stockValide.current = {
-      name: false,
-      email: false,
-      message: false,
-    };
   };
 
   return (

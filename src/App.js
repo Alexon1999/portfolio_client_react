@@ -10,6 +10,8 @@ import Contact from './Contact';
 import Footer from './Footer';
 import About from './About';
 import ProjectDetail from './ProjectDetail';
+import Alerts from './alerts/Alerts';
+import AboutMe from './AboutMe/AboutMe';
 // import useDatabase from './hooks/useDatabase';
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
 
   return (
     <div className='App'>
+      <Alerts />
       <Router>
         <Loader />
         <Navbar />
@@ -51,7 +54,7 @@ function App() {
           </Route>
 
           <Route exact path='/contact' component={Contact} />
-          <Route exact path='/about' component={About} />
+          <Route exact path='/about' component={AboutMe} />
           <Route exact path='/project/:id' component={ProjectDetail} />
         </Switch>
 
