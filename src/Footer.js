@@ -1,7 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
+import { v4 as uuidv4 } from 'uuid';
+
 const Footer = () => {
   const upBtn = useRef(null);
+  const alerts = useSelector((state) => state.alerts);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // const upBtn = document.querySelector('.upBtn');
@@ -80,31 +86,57 @@ const Footer = () => {
           <a
             target='_blank'
             rel='noopener noreferrer'
-            href='https://google.Com'>
+            onClick={() => {
+              const textArea = document.createElement('textarea');
+              textArea.innerHTML = '0033768595182';
+              document.body.appendChild(textArea);
+              textArea.select();
+              document.execCommand('copy');
+
+              textArea.remove();
+
+              const id = uuidv4();
+
+              dispatch({
+                type: 'COPIED',
+                payload: {
+                  id,
+                  sended: true,
+                  message: 'copié dans votre presse-pappier',
+                },
+              });
+
+              setTimeout(() => {
+                dispatch({
+                  type: 'REMOVE_TO_ALERT',
+                  payload: id,
+                });
+              }, 5000);
+            }}>
             <i className='fas fa-phone-alt'></i>
           </a>
           <a
             target='_blank'
             rel='noopener noreferrer'
-            href='https://google.Com'>
+            href='https://www.linkedin.com/in/alexon-uthayakumar-9361221a2/'>
             <i className='fab fa-linkedin-in'></i>
           </a>
           <a
             target='_blank'
             rel='noopener noreferrer'
-            href='https://google.Com'>
+            href='https://www.facebook.com/alexonjr'>
             <i className='fab fa-facebook'></i>
           </a>
           <a
             target='_blank'
             rel='noopener noreferrer'
-            href='https://google.Com'>
+            href='https://www.instagram.com/ualexon1999/?hl=fr'>
             <i className='fab fa-instagram'></i>
           </a>
           <a
             target='_blank'
             rel='noopener noreferrer'
-            href='https://google.Com'>
+            href='https://github.com/Alexon1999'>
             <i className='fab fa-github'></i>
           </a>
         </div>

@@ -8,21 +8,23 @@ const checkLocalStorage = (theme) => {
   return theme;
 };
 
+let themeLinkTag = document.getElementById('theme-style');
+
 function settingTheme(mode) {
   if (mode == 'light') {
-    document.getElementById('theme-style').href = 'default.css';
+    themeLinkTag.href = 'default.css';
   }
 
   if (mode == 'blue') {
-    document.getElementById('theme-style').href = 'blue.css';
+    themeLinkTag.href = 'blue.css';
   }
 
   if (mode == 'green') {
-    document.getElementById('theme-style').href = 'green.css';
+    themeLinkTag.href = 'green.css';
   }
 
   if (mode == 'purple') {
-    document.getElementById('theme-style').href = 'purple.css';
+    themeLinkTag.href = 'purple.css';
   }
 
   localStorage.setItem('theme', mode);

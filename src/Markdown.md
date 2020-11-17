@@ -37,9 +37,11 @@ https://github.com/Alexon1999/top_10
 
 **C'est une Express App utilisant NodeJS qui va s'exécuter pour extraire les données nécessaires sur des diffèrentes sites**
 
-> - **Création d'un API (Express avec NodeJs)** > ![node logo](https://miro.medium.com/max/365/1*Jr3NFSKTfQWRUyjblBSKeg.png)
+> - **Création d'un Rest API (Express avec NodeJs)**
+>   ![node logo](https://miro.medium.com/max/365/1*Jr3NFSKTfQWRUyjblBSKeg.png)
 
-> - **Puppeteer pour extraire les données** > ![puppeteer logo](https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png)
+> - **Puppeteer pour extraire les données**
+>   ![puppeteer logo](https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png)
 
 > - **MySql comme database**
 
@@ -110,9 +112,14 @@ link": "https://clone-8670a.web.app/",
 >   - authentification avec firebase auth
 
 > - **Firebase (Back-end as a Service)**
->   Firebase Auth pour les authentification
->   Firebase Hosting pour le déploiement de l'application
+>
+>   - Firebase Auth pour les authentification
+>   - Firebase Hosting pour le déploiement de l'application
+>   - Firebase cloud functions pour pour créer un un **Rest API** (Express)
+>
 >   ![firebase logo](https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Firebase_Logo.svg/150px-Firebase_Logo.svg.png)
+
+> - **Un Service de paiement avec Stripe** > ![stripe logo](https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/langfr-420px-Stripe_Logo%2C_revised_2016.svg.png)
 
 # 7) Netflix Clone
 
@@ -157,3 +164,53 @@ link": "https://clone-8670a.web.app/",
 > - **Firebase (Back-end as a Service)**
 >   Firebase Hosting pour le déploiement de l'application
 >   ![firebase logo](https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Firebase_Logo.svg/150px-Firebase_Logo.svg.png)
+
+# 10) Zomm Clone
+
+"link": "https://clone-zoom-app.herokuapp.com/",
+"gitRepoUrl": "https://github.com/Alexon1999/zoom_clone",
+
+### C'est un Clone de Zoom
+
+> - **un Front-end avec vanilla js**
+
+> - **Utilisation de Express et Socket.Io dans le back-end**
+>
+>   ![socket.io logo](https://socket.io/css/images/logo.svg)
+
+# 11) Taxe Apprentissage
+
+"link": "https://taxe-apprentissage-lerebours.000webhostapp.com/index.php",
+
+### C'est un site internet pour taxe apprentissage (le CIF Le rebours)
+
+> - **le besoin du client :**
+>   - une page de présentation avec tous les projets et un menu avec différents catégories
+>   - mettre ces projets dans une base de données
+>   - une page de contact
+
+> - **Utilisation de Php pour communiquer avec la base de données**
+> - **Bootstrap pour notre front-end**
+
+# 12) Ebook
+
+"link": "https://taxe-apprentissage-lerebours.000webhostapp.com/index.php",
+
+### Ebook maquillage
+
+> - **le besoin du client :**
+>   - créer un ebook avec les cours de madame Duchemin, cela permettra aux élèves d’esthétique d’avoir leur cours sur leur tablette, pour faciliter l’apprentissage.
+
+> **Analyse des besoins**
+>
+> -     Installation ebook sur les tablettes
+> -     Hébergement de l’ebook sur internet
+> -     Discussion avec le client
+> -     Création de l’Ebook
+> -     Accompagnement du client
+
+> - **Création du ficher Epub**
+>   - Mettre les cours du professeur Duchemin en format ebook
+>   - Insertion des images
+
+> - **Hébergement de l’Ebook sur Google Drive**

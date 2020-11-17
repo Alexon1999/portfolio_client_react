@@ -15,6 +15,7 @@ const langagesObject = {
   html: { type: 'itag', src: 'fab fa-html5 fa-3x' },
   css: { type: 'itag', src: 'fab fa-css3-alt fa-3x' },
   js: { type: 'itag', src: 'fab fa-js fa-3x' },
+  php: { type: 'itag', src: 'fab fa-php fa-3x' },
 };
 
 const backEndObject = {
@@ -71,10 +72,12 @@ const Project = () => {
   const params = useParams();
   const [data, setData] = useState(null);
   const [open, setOpen] = useState(null);
+  const [showWebPage, setShowWebPage] = useState(true);
   const [langagesBackends, setLangagesBackends] = useState({
     langages: [],
     backends: [],
   });
+  const noWebpage = ['Ebook', 'Zoom_clone', "Top's_10 App", 'Youtube Clone'];
 
   useEffect(() => {
     // let cancelToken1 = axios.CancelToken.source();
@@ -105,6 +108,12 @@ const Project = () => {
     //   cancelToken1 && cancelToken1.cancel();
     // };
   }, [params.id]);
+
+  useEffect(() => {
+    if (noWebpage.includes(data?.name)) {
+      setShowWebPage(false);
+    }
+  }, [data]);
 
   const handleCollapse = () => {
     setOpen((prev) => !prev);
@@ -143,11 +152,47 @@ const Project = () => {
               )}
             </div>
           </div>
-          <img
+
+          {/* <img
             className='projectDetail__Image'
             src={baseUrl + data?.imgUrl}
             alt={data?.name}
-          />
+          /> */}
+
+          {/* // + interaction d'une autre page dans le notre */}
+          <div
+            className='page__container'
+            style={{
+              height: showWebPage && '73vh',
+              marginBottom: showWebPage && '1rem',
+            }}>
+            {showWebPage ? (
+              <iframe
+                className='webpage__iframe'
+                src={data?.link}
+                width='100%'
+                height='100%'
+                sandbox>
+                {/* <p>
+              <a href='https://developer.mozilla.org/fr/docs/Web/JavaScript/'>
+                Un lien à utiliser dans les cas où les navigateurs ne supportent
+                pas les <i>iframes</i>.
+              </a>
+            </p> */}
+                <img
+                  className='projectDetail__Image'
+                  src={baseUrl + data?.imgUrl}
+                  alt={data?.name}
+                />
+              </iframe>
+            ) : (
+              <img
+                className='projectDetail__Image'
+                src={baseUrl + data?.imgUrl}
+                alt={data?.name}
+              />
+            )}
+          </div>
 
           <div className='projectDetail__langages'>
             <h5 className='projectDetail__langagesHeading'>

@@ -31,11 +31,11 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ease: 'easeIn', duration: 1 }}
           className='heading'>
+          <p>Bonjour ! Je suis Alexon , Front/Back End Developpeur</p>
           <h1>
             Je vais vous aider à créer votre projet de rêve et cultiver des
             liens entre votre produit et vos utilisateurs
           </h1>
-          <p>Bonjour ! Je suis Alexon , Front/Back End Developpeur</p>
         </motion.div>
 
         <div className='navigation'>
@@ -51,7 +51,7 @@ const Home = () => {
             href='#projects'
             onClick={handleHlick}
             className='btn btn_primary'>
-            Reagardez mes travails
+            Reagardez mes travaux
           </motion.a>
 
           <motion.a

@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useLocation, Switch, Route } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Loader from './Loader';
 import Navbar from './Navbar';
@@ -8,59 +9,59 @@ import Home from './Home';
 import Projects from './Projects';
 import Contact from './Contact';
 import Footer from './Footer';
-import About from './About';
 import ProjectDetail from './ProjectDetail';
 import Alerts from './alerts/Alerts';
 import AboutMe from './AboutMe/AboutMe';
 // import useDatabase from './hooks/useDatabase';
 
+const exitAnimation = {
+  from: {
+    x: '100vw',
+  },
+  to: {
+    x: 0,
+    transition: {
+      delay: 1,
+    },
+  },
+  exit: {
+    x: 400,
+    ease: 'ease',
+  },
+};
+
 function App() {
   // const [category, setCategory] = useState('tous');
   // const data = useDatabase(category);
 
-  useEffect(() => {
-    const loader = () => {
-      const navbar = document.getElementById('navbar');
-      const loader = document.getElementById('loader');
-
-      if (document.body.classList.contains('overflow')) {
-        document.body.classList.remove('overflow');
-      }
-
-      navbar.classList.add('show');
-      loader.classList.add('finished');
-    };
-
-    window.addEventListener('load', loader);
-
-    return () => {
-      window.removeEventListener('load', loader);
-    };
-  }, []);
+  const location = useLocation();
 
   return (
     <div className='App'>
       <Alerts />
-      <Router>
-        <Loader />
-        <Navbar />
+      <Loader />
+      <Navbar />
 
-        <Switch>
-          <Route exact path='/'>
-            <div className='container'>
-              <Home />
-              <Projects />
-            </div>
-          </Route>
+      {/* <AnimatePresence exitBeforeEnter> */}
+      <Switch key={location.key} location={location}>
+        <Route exact path='/'>
+          <motion.div
+            // initial={exitAnimation.from}
+            // animate={exitAnimation.to}
+            className='container'>
+            <Home />
+            <Projects />
+          </motion.div>
+        </Route>
 
-          <Route exact path='/contact' component={Contact} />
-          <Route exact path='/about' component={AboutMe} />
-          <Route exact path='/project/:id' component={ProjectDetail} />
-        </Switch>
+        <Route exact path='/contact' component={Contact} />
+        <Route exact path='/about' component={AboutMe} />
+        <Route exact path='/project/:id' component={ProjectDetail} />
+      </Switch>
+      {/* </AnimatePresence> */}
 
-        {/* <Contact /> */}
-        <Footer />
-      </Router>
+      {/* <Contact /> */}
+      <Footer />
     </div>
   );
 }

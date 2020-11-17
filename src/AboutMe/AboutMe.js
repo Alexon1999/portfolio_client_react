@@ -29,7 +29,7 @@ const AboutMe = () => {
 
           <div className='intro-wrapper'>
             <div className='nav-wrapper'>
-              <a className='link_a' href='index.html'>
+              <a className='link_a' onClick={() => history.push('/')}>
                 <div className='dots-wrapper'>
                   <div id='dot-1' className='browser-dot'></div>
                   <div id='dot-2' className='browser-dot'></div>
@@ -55,7 +55,12 @@ const AboutMe = () => {
                 src={MyImage}
               />
               <h5
-                style={{ textAlign: 'center', lineHeight: 0, margin: '2rem' }}
+                style={{
+                  textAlign: 'center',
+                  lineHeight: 0,
+                  fontSize: '1.2rem !important',
+                  margin: '1.7rem 0rem 0.5rem',
+                }}
                 className='heading  heading_5'>
                 Personalisez le Thème
               </h5>
@@ -95,11 +100,8 @@ const AboutMe = () => {
                 <div id='preview'>
                   <div id='corner-tl' className='corner'></div>
                   <div id='corner-tr' className='corner'></div>
-                  <h3 className='heading  heading_3'>What I Do</h3>
-                  <p>
-                    I was a lead developer in a past life, now I enjoy teaching
-                    courses.
-                  </p>
+                  <h3 className='heading  heading_3'>Qu'est ce que je fais?</h3>
+                  <p>Je suis en 2 année de BTS SIO ( programmation )</p>
                   <div id='corner-br' className='corner'></div>
                   <div id='corner-bl' className='corner'></div>
                 </div>
@@ -117,13 +119,15 @@ const AboutMe = () => {
 
               <p>
                 La programmation est ma passion, Ce que me motive c'est
-                l'inconnu . Je crée des nouveaux projets personnels juste pour
-                m'amuser grâce à cela j'ai pu apprendre plein de chose.
+                l'inconnu . J'aimerais poursuivre dans cette voie et apprendre
+                des nouvelles technologies. J'aime crée des nouveaux projets
+                personnels juste pour m'amuser grâce à cela j'ai pu apprendre
+                plein de chose.
               </p>
 
               <p>
-                <i className='fas fa-laptop-code'></i> je suis engagé dans
-                l'apprentissage tout au long de la vie
+                Le plus important est d'être engagé dans l'apprentissage tout au
+                long de la vie <i className='fas fa-laptop-code'></i>
               </p>
 
               <hr />
@@ -137,10 +141,12 @@ const AboutMe = () => {
                   className='link_a'
                   style={{ marginLeft: '1rem' }}
                   target='_blank'
-                  href='resume.pdf'>
+                  href='CV final.pdf'>
                   Voir mon CV
                 </a>
               </p>
+
+              <hr />
 
               <h4 className='heading heading_4'>Mes Compétences</h4>
 
@@ -152,6 +158,7 @@ const AboutMe = () => {
                   <li>Node Js et (Express App)</li>
                   <li>Php (Symfony)</li>
                   <li>Python</li>
+                  <li>C#</li>
                 </ul>
 
                 <ul>
@@ -165,7 +172,7 @@ const AboutMe = () => {
               </div>
             </div>
 
-            <div className='social-links'>
+            {/* <div className='social-links'>
               <img id='social_img' src='images/follow.jpg' />
               <h3 className='heading  heading_3'>
                 Find me on Twitter & Youtube
@@ -184,7 +191,7 @@ const AboutMe = () => {
                 href='https://twitter.com/dennisivy11'>
                 Twitter: @DennisIvy11
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

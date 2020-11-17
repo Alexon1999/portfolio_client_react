@@ -31,7 +31,7 @@ export const MenuItem = ({ i, link, toggleOpen }) => {
       whileTap={{ scale: 0.95 }}>
       {/* <div className='icon-placeholder' style={style}></div> */}
       <div className='text-placeholder' style={style}>
-        <Link onClick={toggleOpen} to={!!link[1] ? link[1] : '/'}>
+        <Link onClick={toggleOpen} to={!!link[1] ? '/' + link[1] : '/'}>
           {link[0]}
         </Link>
       </div>

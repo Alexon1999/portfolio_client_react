@@ -3,6 +3,7 @@
 const reducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TO_ALERT':
+    case 'COPIED':
       return [action.payload, ...state];
     case 'REMOVE_TO_ALERT':
       return state.filter((alert) => alert.id !== action.payload);

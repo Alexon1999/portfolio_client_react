@@ -1,9 +1,11 @@
-p,
-li,
-span,
-label,
-input,
-textarea {
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+.about-me p,
+.about-me li,
+.about-me span,
+.about-me label,
+.about-me input,
+.about-me textarea {
   color: var(--secondaryText);
   font-family: 'Roboto Mono', monospace;
 }
@@ -14,7 +16,7 @@ textarea {
   cursor: pointer;
 }
 
-ul {
+.about-me ul {
   list-style: none;
 }
 
@@ -146,11 +148,11 @@ ul {
 #profile_pic {
   display: block;
   margin: 0 auto;
-
-  height: 150px;
-  width: 150px;
+  height: 225px;
+  width: 225px;
   object-fit: cover;
   border: 2px solid var(--borderColor);
+  box-shadow: 1px 6px 12px 8px var(--box-shadow);
 }
 
 #theme-options-wrapper {
@@ -264,6 +266,12 @@ ul {
   display: flex;
   justify-content: space-evenly;
   background-color: var(--previewShadow);
+  margin-top: 0.3rem;
+  padding: 1rem;
+}
+
+#skills > ul {
+  margin: 0;
 }
 
 .social-links {
