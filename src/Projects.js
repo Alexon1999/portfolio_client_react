@@ -1,18 +1,19 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from "react";
 
-import Svg from './Svg';
-import Project from './Project';
+import Svg from "./Svg";
+import Project from "./Project";
 
-import { useHistory } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import GithubCalendar from 'github-calendar';
-import FlipMove from 'react-flip-move';
-import useDatabase from './hooks/useDatabase';
+import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
+import GithubCalendar from "github-calendar";
+import FlipMove from "react-flip-move";
+import useDatabase from "./hooks/useDatabase";
 
 const Projects = () => {
   const heading = useRef(null);
+  const githubCalendar = useRef(null);
   const history = useHistory();
-  const [category, setCategory] = useState('tous');
+  const [category, setCategory] = useState("tous");
   const data = useDatabase(category);
 
   useEffect(() => {
@@ -20,38 +21,41 @@ const Projects = () => {
       const windowHalfHeight = window.innerHeight / 2;
 
       if (windowHalfHeight > heading.current.getBoundingClientRect().top) {
-        heading.current.classList.add('active');
+        heading.current.classList.add("active");
       } else {
-        heading.current.classList.remove('active');
+        heading.current.classList.remove("active");
       }
     };
 
-    window.addEventListener('scroll', scrollHead);
+    window.addEventListener("scroll", scrollHead);
 
-    const gihubText = async () => {
+    const githubText = async () => {
       // push calendar to the div with class of calendar
-      await GithubCalendar('.calendar', 'Alexon1999', {
+      // await GithubCalendar(".calendar", "Alexon1999", {
+      //   responsive: true,
+      // });
+      await GithubCalendar(githubCalendar.current, "Alexon1999", {
         responsive: true,
       });
     };
 
-    gihubText();
+    githubText();
 
     return () => {
-      window.removeEventListener('scroll', scrollHead);
+      window.removeEventListener("scroll", scrollHead);
     };
   }, []);
 
   const handleClick = (type) => (e) => {
     e.preventDefault();
 
-    const btns = document.querySelectorAll('.work_menu > .btn');
+    const btns = document.querySelectorAll(".work_menu > .btn");
     btns.forEach((b) => {
-      b.classList.remove('btn_primary');
+      b.classList.remove("btn_primary");
     });
 
-    if (!e.target.classList.contains('btn_primary')) {
-      e.target.classList.add('btn_primary');
+    if (!e.target.classList.contains("btn_primary")) {
+      e.target.classList.add("btn_primary");
     }
 
     setCategory(type);
@@ -59,17 +63,21 @@ const Projects = () => {
 
   const goToGithub = (e) => {
     if (
-      e.target.classList.contains('calendar') ||
-      e.target.parentElement.classList.contains('calendar') ||
-      e.target.parentElement.parentElement.classList.contains('calendar')
+      e.target.classList.contains("calendar") ||
+      e.target.parentElement.classList.contains("calendar") ||
+      e.target.parentElement.parentElement.classList.contains("calendar")
     ) {
-      const a = document.querySelector(
-        '#projects > div > div.calendar > div.position-relative > div > div.contrib-footer.clearfix.mt-1.mx-3.px-3.pb-1 > div.float-left.text-gray > a'
-      );
+      // querySelector return html or null
+      // const a = document.querySelector(
+      //   "#projects > div > div.calendar > div.position-relative > div > div.contrib-footer.clearfix.mt-1.mx-3.px-3.pb-1 > div.float-left.text-gray > a"
+      // );
       // window.location.href = a.href;
 
+      // console.log(a);
+
       // + New tab
-      window.open(a.href, '_blank');
+      // window.open(a?.href || "https://github.com/Alexon1999", "_blank");
+      window.open("https://github.com/Alexon1999", "_blank");
     }
   };
 
@@ -89,39 +97,42 @@ const Projects = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, x: '100vw' }}
+          initial={{ opacity: 0, x: "100vw" }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5, duration: 1, ease: 'easeInOut' }}
+          transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
           onClick={goToGithub}
-          className='calendar'></motion.div>
+          className='calendar'
+          ref={githubCalendar}></motion.div>
 
         <div className='work_menu'>
           <motion.a
-            onClick={handleClick('tous')}
+            onClick={handleClick("tous")}
             className='btn work_btn btn_primary'>
             Tous
           </motion.a>
 
-          <motion.a onClick={handleClick('react')} className='btn work_btn'>
+          <motion.a onClick={handleClick("react")} className='btn work_btn'>
             React
           </motion.a>
 
-          <motion.a onClick={handleClick('front-end')} className='btn work_btn'>
+          <motion.a onClick={handleClick("front-end")} className='btn work_btn'>
             Front-end
           </motion.a>
 
-          <motion.a onClick={handleClick('back-end')} className='btn work_btn'>
+          <motion.a onClick={handleClick("back-end")} className='btn work_btn'>
             Back-end
           </motion.a>
 
-          <motion.a onClick={handleClick('fullstack')} className='btn work_btn'>
+          <motion.a onClick={handleClick("fullstack")} className='btn work_btn'>
             Fullstack
           </motion.a>
 
-          <motion.a onClick={handleClick('UI-design')} className='btn work_btn'>
-            Web designs
+          <motion.a
+            onClick={handleClick("UX-UI-Design")}
+            className='btn work_btn'>
+            UX/UI Design
           </motion.a>
-          <motion.a onClick={handleClick('autres')} className='btn work_btn'>
+          <motion.a onClick={handleClick("autres")} className='btn work_btn'>
             Autres
           </motion.a>
         </div>

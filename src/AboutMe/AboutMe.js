@@ -1,19 +1,19 @@
-import React from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
+import React from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
-import './AboutMe.css';
+import "./AboutMe.css";
 
-import MyImage from './images/Alexon.PNG';
+import MyImage from "./images/Alexon.PNG";
 
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const AboutMe = () => {
   const history = useHistory();
 
-  const [theme, setTheme] = useLocalStorage('light');
+  const [theme, setTheme] = useLocalStorage("light");
 
   const handleChangeTheme = (mode) => () => {
-    console.log('clicked');
+    console.log("clicked");
     setTheme(mode);
   };
 
@@ -29,7 +29,7 @@ const AboutMe = () => {
 
           <div className='intro-wrapper'>
             <div className='nav-wrapper'>
-              <a className='link_a' onClick={() => history.push('/')}>
+              <a className='link_a' onClick={() => history.push("/")}>
                 <div className='dots-wrapper'>
                   <div id='dot-1' className='browser-dot'></div>
                   <div id='dot-2' className='browser-dot'></div>
@@ -41,7 +41,7 @@ const AboutMe = () => {
                 <li>
                   <a
                     className='link_a'
-                    onClick={() => history.push('/contact')}>
+                    onClick={() => history.push("/contact")}>
                     Contact
                   </a>
                 </li>
@@ -51,15 +51,15 @@ const AboutMe = () => {
             <div className='left-column'>
               <img
                 id='profile_pic'
-                style={{ borderRadius: '10px' }}
+                style={{ borderRadius: "10px" }}
                 src={MyImage}
               />
               <h5
                 style={{
-                  textAlign: 'center',
+                  textAlign: "center",
                   lineHeight: 0,
-                  fontSize: '1.2rem !important',
-                  margin: '1.7rem 0rem 0.5rem',
+                  fontSize: "1.2rem !important",
+                  margin: "1.7rem 0rem 0.5rem",
                 }}
                 className='heading  heading_5'>
                 Personalisez le Thème
@@ -68,22 +68,22 @@ const AboutMe = () => {
               <div id='theme-options-wrapper'>
                 <div
                   data-mode='light'
-                  onClick={handleChangeTheme('light')}
+                  onClick={handleChangeTheme("light")}
                   id='light-mode'
                   className='theme-dot'></div>
                 <div
                   data-mode='blue'
-                  onClick={handleChangeTheme('blue')}
+                  onClick={handleChangeTheme("blue")}
                   id='blue-mode'
                   className='theme-dot'></div>
                 <div
                   data-mode='green'
-                  onClick={handleChangeTheme('green')}
+                  onClick={handleChangeTheme("green")}
                   id='green-mode'
                   className='theme-dot'></div>
                 <div
                   data-mode='purple'
-                  onClick={handleChangeTheme('purple')}
+                  onClick={handleChangeTheme("purple")}
                   id='purple-mode'
                   className='theme-dot'></div>
               </div>
@@ -101,7 +101,11 @@ const AboutMe = () => {
                   <div id='corner-tl' className='corner'></div>
                   <div id='corner-tr' className='corner'></div>
                   <h3 className='heading  heading_3'>Qu'est ce que je fais?</h3>
-                  <p>Je suis en 2 année de BTS SIO ( programmation )</p>
+                  {/* <p>Je suis en 2 année de BTS SIO ( programmation )</p> */}
+                  <p>
+                    Je suis en Bachelor 3 (Concepteur Développeur
+                    d'Applications) à L'Epsi
+                  </p>
                   <div id='corner-br' className='corner'></div>
                   <div id='corner-bl' className='corner'></div>
                 </div>
@@ -127,7 +131,8 @@ const AboutMe = () => {
 
               <p>
                 Le plus important est d'être engagé dans l'apprentissage tout au
-                long de la vie <i className='fas fa-laptop-code'></i>
+                long de la vie car la technologie évolue chaque jour
+                <i className='fas fa-laptop-code'></i>
               </p>
 
               <hr />
@@ -135,13 +140,12 @@ const AboutMe = () => {
               <h4 className='heading heading_4'>Mon Objectif</h4>
 
               <p>
-                Fullstack developpeur avec objectif principal React(front-end)
-                et Back-end(Node Js , PHP-Symfony)
+                Développeur full stack
                 <a
                   className='link_a'
-                  style={{ marginLeft: '1rem' }}
+                  style={{ marginLeft: "1rem" }}
                   target='_blank'
-                  href='CV final.pdf'>
+                  href='AlexonUthayakumar.pdf'>
                   Voir mon CV
                 </a>
               </p>
@@ -154,15 +158,18 @@ const AboutMe = () => {
                 <ul>
                   <li>HTML/CSS/SCSS</li>
                   <li>JavaScript</li>
+                  <li>Python</li>
+                  <li>Java</li>
+                  <li>C# &amp; .NET</li>
                   <li>React / React Native</li>
+                  <li>Vue Js</li>
                   <li>Node Js et (Express App)</li>
                   <li>Php (Symfony)</li>
-                  <li>Python</li>
-                  <li>C#</li>
+                  <li>Django, Flask</li>
                 </ul>
 
                 <ul>
-                  <li>Github</li>
+                  <li>Git &amp; Github</li>
                   <li>MongoDB</li>
                   <li>MySql</li>
                   <li>Firebase</li>

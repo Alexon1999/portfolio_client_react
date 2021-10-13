@@ -3,6 +3,8 @@ import ReactDom from 'react-dom';
 import loader1 from './imgs//Spinner-1s-200px.gif';
 import loader2 from './imgs/chargement.gif';
 
+import { AnimatePresence, motion } from 'framer-motion';
+
 const Loader = () => {
   const [loading, setLoading] = useState(true);
 
@@ -20,11 +22,11 @@ const Loader = () => {
   }, []);
 
   if (!loading) {
-    const navbar = document.getElementById('navbar');
+    // const navbar = document.getElementById('navbar');
     const loader = document.getElementById('loader');
     const app = document.querySelector('.App');
 
-    navbar?.classList.add('show');
+    // navbar?.classList.add('show');
     app?.classList.add('show');
     loader?.classList.add('finished');
   }
