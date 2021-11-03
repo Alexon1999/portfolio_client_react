@@ -89,7 +89,8 @@ const Projects = () => {
     <section id='projects' className='work_section'>
       <div className='work_section-container'>
         <motion.h1 ref={heading} className='heading'>
-          Mes Travails
+          {/* Mes Travails */}
+          Mes Projets
         </motion.h1>
 
         <div className='work_heading'>
@@ -113,6 +114,10 @@ const Projects = () => {
 
           <motion.a onClick={handleClick("react")} className='btn work_btn'>
             React
+          </motion.a>
+
+          <motion.a onClick={handleClick("vue.js")} className='btn work_btn'>
+            Vue.js
           </motion.a>
 
           <motion.a onClick={handleClick("front-end")} className='btn work_btn'>

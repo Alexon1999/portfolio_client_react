@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
-import logo from './imgs/logo.png';
+import logo from "./imgs/logo.png";
 
-import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
-import NavMobile from './mobile/NavMobile';
+import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
+import NavMobile from "./mobile/NavMobile";
 
 const Navbar = () => {
   const nav = useRef(null);
@@ -25,9 +25,9 @@ const Navbar = () => {
       }
     }
 
-    window.addEventListener('scroll', navBar);
+    window.addEventListener("scroll", navBar);
     return () => {
-      window.removeEventListener('scroll', navBar);
+      window.removeEventListener("scroll", navBar);
     };
   }, []);
 
@@ -42,7 +42,7 @@ const Navbar = () => {
 
     window.scroll({
       top: offsetTop,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -55,7 +55,7 @@ const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               whileHover={{ scale: 1.1 }}
-              transition={{ ease: 'easeIn', duration: 0.4 }}
+              transition={{ ease: "easeIn", duration: 0.4 }}
               src={logo}
               alt=''
             />
@@ -63,20 +63,21 @@ const Navbar = () => {
         </div>
 
         <nav>
-          {location.pathname === '/' && (
+          {location.pathname === "/" && (
             <a
               href='#projects'
               onClick={handleHlick}
               // className='btn_work'
               className='btn btn_third'>
-              Travail
+              {/* Travail */}
+              Projets
             </a>
           )}
 
           <Link
             to='/about'
             className={`btn btn_third  ${
-              location.pathname === '/about' ? 'btn_primary' : ''
+              location.pathname === "/about" ? "btn_primary" : ""
             }`}>
             A propos de moi
           </Link>
@@ -85,7 +86,7 @@ const Navbar = () => {
             to='/contact'
             id='contact1'
             className={`btn btn_third ${
-              location.pathname === '/contact' ? 'btn_primary' : ''
+              location.pathname === "/contact" ? "btn_primary" : ""
             }`}>
             Contact
           </Link>

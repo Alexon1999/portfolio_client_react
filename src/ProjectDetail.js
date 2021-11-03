@@ -16,6 +16,7 @@ const langagesObject = {
   css: { type: "itag", src: "fab fa-css3-alt fa-3x" },
   js: { type: "itag", src: "fab fa-js fa-3x" },
   php: { type: "itag", src: "fab fa-php fa-3x" },
+  Python: { type: "itag", src: "fab fa-python fa-3x" },
 };
 
 const backEndObject = {
@@ -30,9 +31,13 @@ const backEndObject = {
   },
   Firebase: {
     type: "png",
-    src: "https://www.gstatic.com/devrel-devsite/prod/v024eef4ea86c0379222e27415e1e58a21ab1695c99975204bbd5279577b49303/firebase/images/lockup.png?dcb_=0.7848920872950038",
+    src: "https://www.gstatic.com/devrel-devsite/prod/v0a713fec70a4b4c54311265d5142e962747a0e45a24063467564a2765c008ac7/firebase/images/lockup.png",
   },
   mySql: { type: "svg", src: mySqlSVG },
+  Django: {
+    type: "png",
+    src: "https://www.ambient-it.net/wp-content/uploads/2018/10/django175.png",
+  },
 };
 
 const getLesLangagesBackends = (data) => {

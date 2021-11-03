@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { motion } from 'framer-motion';
-import { MenuItem } from './MenuItem';
+import * as React from "react";
+import { motion } from "framer-motion";
+import { MenuItem } from "./MenuItem";
 
 const variants = {
   open: {
@@ -20,7 +20,8 @@ export const Navigation = ({ toggleOpen }) => (
 );
 
 const items = {
-  0: ['Travail'],
-  1: ['A propos de moi', 'about'],
-  2: ['Contact', 'contact'],
+  // 0: ['Travail'],
+  0: ["Projets"],
+  1: ["A propos de moi", "about"],
+  2: ["Contact", "contact"],
 };

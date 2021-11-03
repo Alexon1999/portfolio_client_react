@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import mobile from './imgs/mobile.png';
+import mobile from "./imgs/mobile.png";
 
-import { motion } from 'framer-motion';
-import { useHistory } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
   const history = useHistory();
@@ -19,7 +19,7 @@ const Home = () => {
 
     window.scroll({
       top: offsetTop,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -27,11 +27,11 @@ const Home = () => {
     <section className='home_section'>
       <div className='section_content'>
         <motion.div
-          initial={{ opacity: 0, y: '-150px' }}
+          initial={{ opacity: 0, y: "-150px" }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ease: 'easeIn', duration: 1 }}
+          transition={{ ease: "easeIn", duration: 1 }}
           className='heading'>
-          <p>Bonjour ! Je suis Alexon , Front/Back End Developpeur</p>
+          <p>Bonjour ! Je suis Alexon , Front/Back End Développeur</p>
           <h1>
             Je vais vous aider à créer votre projet de rêve et cultiver des
             liens entre votre produit et vos utilisateurs
@@ -40,11 +40,11 @@ const Home = () => {
 
         <div className='navigation'>
           <motion.a
-            style={{ display: 'inline-block' }}
+            style={{ display: "inline-block" }}
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
-              ease: 'easeIn',
+              ease: "easeIn",
               delay: 0.5,
               duration: 1,
             }}
@@ -57,13 +57,13 @@ const Home = () => {
           <motion.a
             onClick={(e) => {
               e.preventDefault();
-              history.push('/contact');
+              history.push("/contact");
             }}
-            style={{ display: 'inline-block' }}
+            style={{ display: "inline-block" }}
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
-              ease: 'easeIn',
+              ease: "easeIn",
               delay: 0.5,
               duration: 1,
             }}

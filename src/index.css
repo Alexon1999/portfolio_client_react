@@ -397,7 +397,6 @@ section.home_section .mobile_container {
   padding: 1rem;
   border-radius: 1rem;
   background-color: #fff;
-  text-align: center;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -884,6 +883,11 @@ section.home_section .mobile_container {
 
 .projectDetail__langagesIcones {
   margin-left: 1rem;
+}
+.projectDetail__BackendsIcones,
+.projectDetail__langagesIcones {
+  display: flex;
+  align-items: center;
 }
 
 .projectDetail__BackendsIcones img,
