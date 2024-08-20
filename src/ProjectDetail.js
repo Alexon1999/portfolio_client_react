@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 
 import mongoDbSVG from "./mongoDb.svg";
 import mySqlSVG from "./mySql.svg";
@@ -49,6 +49,7 @@ const getLesLangagesBackends = (data) => {
   if (splitedLangArr?.length > 0) {
     for (const l in langagesObject) {
       const { src, type } = langagesObject[l];
+      // eslint-disable-next-line no-unused-expressions
       splitedLangArr?.forEach((langage) => {
         if (l === langage) {
           langages.push({ src, name: l, type });
@@ -59,6 +60,7 @@ const getLesLangagesBackends = (data) => {
   if (splitedBackEndArr) {
     for (const b in backEndObject) {
       const { src, type } = backEndObject[b];
+      // eslint-disable-next-line no-unused-expressions
       splitedBackEndArr?.forEach((backend) => {
         if (b === backend) {
           backends.push({ src, name: b, type });

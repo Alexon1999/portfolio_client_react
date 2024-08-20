@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import ReactDom from 'react-dom';
-import loader1 from './imgs//Spinner-1s-200px.gif';
-import loader2 from './imgs/chargement.gif';
+import React, { useEffect, useState } from "react";
+import ReactDom from "react-dom";
+import loader1 from "./imgs//Spinner-1s-200px.gif";
+import loader2 from "./imgs/chargement.gif";
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from "framer-motion";
 
 const Loader = () => {
   const [loading, setLoading] = useState(true);
@@ -14,21 +14,23 @@ const Loader = () => {
       setLoading(false);
     };
 
-    window.addEventListener('load', loader);
+    window.addEventListener("load", loader);
 
     return () => {
-      window.removeEventListener('load', loader);
+      window.removeEventListener("load", loader);
     };
   }, []);
 
   if (!loading) {
     // const navbar = document.getElementById('navbar');
-    const loader = document.getElementById('loader');
-    const app = document.querySelector('.App');
+    const loader = document.getElementById("loader");
+    const app = document.querySelector(".App");
 
     // navbar?.classList.add('show');
-    app?.classList.add('show');
-    loader?.classList.add('finished');
+    // eslint-disable-next-line no-unused-expressions
+    app?.classList.add("show");
+    // eslint-disable-next-line no-unused-expressions
+    loader?.classList.add("finished");
   }
 
   return ReactDom.createPortal(
@@ -38,7 +40,7 @@ const Loader = () => {
         <img src={loader2} alt='' />
       </div>
     </div>,
-    document.getElementById('portal')
+    document.getElementById("portal")
   );
 };
 

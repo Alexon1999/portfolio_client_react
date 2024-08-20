@@ -1,24 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState, useEffect, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-import Video from './imgs//contact_video.mp4';
-import axios from './axios/axios';
+import Video from "./imgs//contact_video.mp4";
+import axios from "./axios/axios";
 
-const baseUrl = 'https://my-portfolio-alexon.herokuapp.com/'; //+ http://localhost:5000
+import isValideForm from "./functions/validateForm";
+import { addToAlert } from "./redux/actionCreator";
+import { motion, AnimatePresence } from "framer-motion";
 
-import isValideForm from './functions/validateForm';
-import { addToAlert, removeFromAlert } from './redux/actionCreator';
-
-import {
-  Button,
-  // FormControl,
-  // InputLabel,
-  // Input,
-  // FormHelperText,
-} from '@material-ui/core';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 const Contact = () => {
   // const [contactFields, setContactFields] = useState({
@@ -69,7 +59,7 @@ const Contact = () => {
   useEffect(() => {
     return () => {
       dispatch({
-        type: 'saveValide',
+        type: "saveValide",
         payload: {
           email: { valide: stockValide.current.email },
           name: { valide: stockValide.current.name },
@@ -94,7 +84,7 @@ const Contact = () => {
     e.preventDefault();
     const opt = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
 
@@ -102,7 +92,7 @@ const Contact = () => {
 
     try {
       const { data } = await axios.post(
-        baseUrl + 'post-email',
+        "/post-email",
         {
           email: email.value,
           name: name.value,
@@ -112,7 +102,7 @@ const Contact = () => {
       );
 
       dispatch({
-        type: 'submited',
+        type: "submited",
       });
 
       dispatch(addToAlert(data, AlertId));
@@ -134,7 +124,7 @@ const Contact = () => {
 
     setTimeout(() => {
       dispatch({
-        type: 'REMOVE_TO_ALERT',
+        type: "REMOVE_TO_ALERT",
         payload: AlertId,
       });
     }, 5000);
@@ -166,14 +156,14 @@ const Contact = () => {
                 <i
                   className='fas fa-user'
                   style={{
-                    color: isValide.name ? '#00d1b2' : 'red',
+                    color: isValide.name ? "#00d1b2" : "red",
                   }}></i>
               </span>
               <span className='icon is-small is-right'>
                 <i
                   className='fas fa-check'
                   style={{
-                    color: isValide.name ? '#00d1b2' : 'red',
+                    color: isValide.name ? "#00d1b2" : "red",
                   }}></i>
               </span>
             </p>
@@ -194,14 +184,14 @@ const Contact = () => {
                 <i
                   className='fas fa-envelope'
                   style={{
-                    color: isValide.email ? '#00d1b2' : 'red',
+                    color: isValide.email ? "#00d1b2" : "red",
                   }}></i>
               </span>
               <span className='icon is-small is-right'>
                 <i
                   className='fas fa-check'
                   style={{
-                    color: isValide.email ? '#00d1b2' : 'red',
+                    color: isValide.email ? "#00d1b2" : "red",
                   }}></i>
               </span>
             </p>
@@ -212,7 +202,7 @@ const Contact = () => {
               <textarea
                 name='message'
                 style={{
-                  borderColor: isValide.message ? '#00d1b2' : 'red',
+                  borderColor: isValide.message ? "#00d1b2" : "red",
                 }}
                 required
                 // value={contactFields.message}
@@ -236,15 +226,15 @@ const Contact = () => {
               <motion.button
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 10, opacity: 1 }}
-                transition={{ type: 'spring', duration: 1, delay: 0.2 }}
-                exit={{ y: 50, opacity: 0, ease: 'easeIn' }}
+                transition={{ type: "spring", duration: 1, delay: 0.2 }}
+                exit={{ y: 50, opacity: 0, ease: "easeIn" }}
                 disabled={!valideForm}
                 type='submit'
                 style={{
                   borderRadius: 5,
-                  display: 'block',
-                  margin: 'auto',
-                  background: '#00d1b2',
+                  display: "block",
+                  margin: "auto",
+                  background: "#00d1b2",
                 }}
                 className='btn btn_primary'>
                 Envoyer

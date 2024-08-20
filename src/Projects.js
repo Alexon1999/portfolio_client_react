@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import GithubCalendar from "github-calendar";
 import FlipMove from "react-flip-move";
 import useDatabase from "./hooks/useDatabase";
-import GitHubCalendarComponent from "./GithubCalendarComponent";
 
 const Projects = () => {
   const heading = useRef(null);
