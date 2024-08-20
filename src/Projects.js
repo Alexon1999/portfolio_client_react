@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 
 import Svg from "./Svg";
 import Project from "./Project";
@@ -8,13 +8,32 @@ import { motion } from "framer-motion";
 import GithubCalendar from "github-calendar";
 import FlipMove from "react-flip-move";
 import useDatabase from "./hooks/useDatabase";
+import GitHubCalendarComponent from "./GithubCalendarComponent";
 
 const Projects = () => {
   const heading = useRef(null);
   const githubCalendar = useRef(null);
   const history = useHistory();
-  const [category, setCategory] = useState("tous");
-  const data = useDatabase(category);
+  const [categoriesQuery, setCategoriesQuery] = useState("");
+  const [orderBy, setOrderBy] = useState("updatedAt");
+  const [order, setOrder] = useState("desc");
+  const [projectsTransformed, setProjectsTransformed] = useState([]);
+
+  const queryParams = useMemo(() => {
+    const params = {};
+    if (categoriesQuery) params.categories = categoriesQuery;
+    if (orderBy) params.orderby = orderBy;
+    if (order) params.order = order;
+    return params;
+  }, [categoriesQuery, orderBy, order]);
+
+  const { data: categories } = useDatabase("/categories", {
+    method: "GET",
+  });
+  const { data: projects } = useDatabase("/projects", {
+    method: "GET",
+    queryParams,
+  });
 
   useEffect(() => {
     const scrollHead = () => {
@@ -34,7 +53,7 @@ const Projects = () => {
       // await GithubCalendar(".calendar", "Alexon1999", {
       //   responsive: true,
       // });
-      await GithubCalendar(githubCalendar.current, "Alexon1999", {
+      GithubCalendar(githubCalendar.current, "Alexon1999", {
         responsive: true,
       });
     };
@@ -45,6 +64,19 @@ const Projects = () => {
       window.removeEventListener("scroll", scrollHead);
     };
   }, []);
+
+  useEffect(() => {
+    if (projects) {
+      setProjectsTransformed(
+        projects.map((project) => ({
+          ...project,
+          categories_strings: project.categories.map(
+            (category) => category.name
+          ),
+        }))
+      );
+    }
+  }, [projects]);
 
   const handleClick = (type) => (e) => {
     e.preventDefault();
@@ -58,7 +90,7 @@ const Projects = () => {
       e.target.classList.add("btn_primary");
     }
 
-    setCategory(type);
+    setCategoriesQuery(type);
   };
 
   const goToGithub = (e) => {
@@ -107,44 +139,24 @@ const Projects = () => {
 
         <div className='work_menu'>
           <motion.a
-            onClick={handleClick("tous")}
+            onClick={handleClick("")}
             className='btn work_btn btn_primary'>
             Tous
           </motion.a>
 
-          <motion.a onClick={handleClick("react")} className='btn work_btn'>
-            React
-          </motion.a>
-
-          <motion.a onClick={handleClick("vue.js")} className='btn work_btn'>
-            Vue.js
-          </motion.a>
-
-          <motion.a onClick={handleClick("front-end")} className='btn work_btn'>
-            Front-end
-          </motion.a>
-
-          <motion.a onClick={handleClick("back-end")} className='btn work_btn'>
-            Back-end
-          </motion.a>
-
-          <motion.a onClick={handleClick("fullstack")} className='btn work_btn'>
-            Fullstack
-          </motion.a>
-
-          <motion.a
-            onClick={handleClick("UX-UI-Design")}
-            className='btn work_btn'>
-            UX/UI Design
-          </motion.a>
-          <motion.a onClick={handleClick("autres")} className='btn work_btn'>
-            Autres
-          </motion.a>
+          {categories?.map((category) => (
+            <motion.a
+              key={category._id}
+              onClick={handleClick(category._id)}
+              className='btn work_btn'>
+              {category?.name}
+            </motion.a>
+          ))}
         </div>
 
         {/* <div className='my_works'> */}
         <FlipMove className='my_works'>
-          {data?.map((project) => (
+          {projectsTransformed?.map((project) => (
             <Project
               key={project._id}
               project={project}

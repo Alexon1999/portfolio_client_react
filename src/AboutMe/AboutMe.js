@@ -101,11 +101,7 @@ const AboutMe = () => {
                   <div id='corner-tl' className='corner'></div>
                   <div id='corner-tr' className='corner'></div>
                   <h3 className='heading  heading_3'>Qu'est ce que je fais?</h3>
-                  {/* <p>Je suis en 2 année de BTS SIO ( programmation )</p> */}
-                  <p>
-                    Je suis en Bachelor 3 (Concepteur Développeur
-                    d'Applications) à L'Epsi
-                  </p>
+                  <p>Je suis Développeur Full Stack & DevOps</p>
                   <div id='corner-br' className='corner'></div>
                   <div id='corner-bl' className='corner'></div>
                 </div>
@@ -122,17 +118,31 @@ const AboutMe = () => {
               <h4 className='heading  heading_4'>Plus à propos de moi</h4>
 
               <p>
-                La programmation est ma passion, Ce que me motive c'est
-                l'inconnu . J'aimerais poursuivre dans cette voie et apprendre
-                des nouvelles technologies. J'aime crée des nouveaux projets
-                personnels juste pour m'amuser grâce à cela j'ai pu apprendre
-                plein de chose.
+                Je me spécialise dans le développement full stack, le DevOps, et
+                les technologies cloud. Mon expertise couvre tout le cycle de
+                vie du développement logiciel, de la collecte des besoins à la
+                conception de systèmes, en passant par la modélisation de bases
+                de données, le développement d'API backend et d'interfaces
+                frontend. J'ai également de l'expérience en analyse et la
+                science des données, ainsi que dans la mise en place de
+                pipelines CI/CD et le monitoring d'infrastructures cloud, en
+                utilisant des outils DevOps pour optimiser et gérer efficacement
+                les environnements cloud.
               </p>
 
               <p>
-                Le plus important est d'être engagé dans l'apprentissage tout au
-                long de la vie car la technologie évolue chaque jour
-                <i className='fas fa-laptop-code'></i>
+                🔍 Ce que je fais :
+                <ul>
+                  <li>- Développement Full Stack</li>
+                  <li>- DevOps</li>
+                  <li>- Analyse de données et Data Science</li>
+                </ul>
+              </p>
+
+              <p>
+                Toujours en quête de nouveaux défis, je cherche constamment à
+                progresser dans ma carrière. N'hésitez pas à consulter mon
+                profil GitHub pour découvrir certains de mes projets.
               </p>
 
               <hr />
@@ -140,13 +150,19 @@ const AboutMe = () => {
               <h4 className='heading heading_4'>Mon Objectif</h4>
 
               <p>
-                Développeur full stack
+                Toujours en quête de nouveaux défis, je cherche constamment à
+                progresser dans ma carrière. N'hésitez pas à consulter mon
+                profil GitHub ou mon CV pour découvrir certains de mes projets.
                 <a
                   className='link_a'
                   style={{ marginLeft: "1rem" }}
                   target='_blank'
                   href='AlexonUthayakumar.pdf'>
                   Voir mon CV
+                </a>{" "}
+                <span>| </span>
+                <a href='https://github.com/Alexon1999' target='_blank'>
+                  Voir Github
                 </a>
               </p>
 
@@ -159,22 +175,40 @@ const AboutMe = () => {
                   <li>HTML/CSS/SCSS</li>
                   <li>JavaScript</li>
                   <li>Python</li>
-                  <li>Java</li>
+                  <li>Java / Quarkus</li>
                   <li>C# &amp; .NET</li>
-                  <li>React / React Native</li>
+                  <li>React Js / React Native</li>
                   <li>Vue Js</li>
                   <li>Node Js et (Express App)</li>
                   <li>Php (Symfony)</li>
                   <li>Django, Flask</li>
+                  <li>Pytest</li>
                 </ul>
 
                 <ul>
-                  <li>Git &amp; Github</li>
+                  <li>Git &amp; Github &amp; Gitlab</li>
                   <li>MongoDB</li>
                   <li>MySql</li>
+                  <li>Postgresql</li>
                   <li>Firebase</li>
                   <li>Heroku</li>
-                  <li>Google Maps API</li>
+                  <li>Docker</li>
+                  <li>Kubernetes</li>
+                  <li>Helm Charts</li>
+                  <li>Gitlab CI</li>
+                  <li>Prometheus</li>
+                  <li>Grafana</li>
+                  <li>Loki</li>
+                  <li>NGINX</li>
+                  <li>Terraform</li>
+                  <li>Ansible</li>
+                  <li>Virtualisation</li>
+                  <li>Réseaux Informatiques</li>
+                  <li>Pandas</li>
+                  <li>Numpy</li>
+                  <li>Scikit-Learn</li>
+                  <li>Matplotlib</li>
+                  <li>Data Analysis/Data Science</li>
                 </ul>
               </div>
             </div>

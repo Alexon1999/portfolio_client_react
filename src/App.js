@@ -1,22 +1,23 @@
-import React from 'react';
+import React from "react";
 
-import { useLocation, Switch, Route } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useLocation, Switch, Route } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
-import Loader from './Loader';
-import Navbar from './Navbar';
-import Home from './Home';
-import Projects from './Projects';
-import Contact from './Contact';
-import Footer from './Footer';
-import ProjectDetail from './ProjectDetail';
-import Alerts from './alerts/Alerts';
-import AboutMe from './AboutMe/AboutMe';
+import Loader from "./Loader";
+import Navbar from "./Navbar";
+import Home from "./Home";
+import Projects from "./Projects";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import ProjectDetail from "./ProjectDetail";
+import Alerts from "./alerts/Alerts";
+import AboutMe from "./AboutMe/AboutMe";
+import MyActivity from "./MyActivity";
 // import useDatabase from './hooks/useDatabase';
 
 const exitAnimation = {
   from: {
-    x: '100vw',
+    x: "100vw",
   },
   to: {
     x: 0,
@@ -26,7 +27,7 @@ const exitAnimation = {
   },
   exit: {
     x: 400,
-    ease: 'ease',
+    ease: "ease",
   },
 };
 
@@ -50,6 +51,7 @@ function App() {
             // animate={exitAnimation.to}
             className='container'>
             <Home />
+            <MyActivity />
             <Projects />
           </motion.div>
         </Route>

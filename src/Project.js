@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
-
-const baseUrl = "https://my-portfolio-alexon.herokuapp.com/"; //+ local server :  http://localhost:5000
+import { Badge } from "react-bootstrap";
 
 const Project = forwardRef(({ project, getProjectDetail }, ref) => {
   return (

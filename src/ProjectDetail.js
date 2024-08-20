@@ -9,8 +9,6 @@ import ReactMarkdown from "react-markdown";
 import { Collapse, Button, Badge } from "react-bootstrap";
 import { IconButton } from "@material-ui/core";
 
-const baseUrl = "https://my-portfolio-alexon.herokuapp.com/"; //+ http://localhost:5000
-
 const langagesObject = {
   html: { type: "itag", src: "fab fa-html5 fa-3x" },
   css: { type: "itag", src: "fab fa-css3-alt fa-3x" },
@@ -101,7 +99,16 @@ const Project = () => {
           // }
         );
 
-        setData(data);
+        console.log(data);
+
+        const categories_strings = data.categories
+          .map((category) => category.name)
+          .join(" ");
+
+        setData({
+          ...data,
+          categories_strings,
+        });
         setLangagesBackends({
           ...langagesBackends,
           ...getLesLangagesBackends(data),
@@ -133,6 +140,28 @@ const Project = () => {
     window.open(url, "_blank");
   };
 
+  const statut_badge = (statut) => {
+    if (statut === "finish") {
+      return (
+        <Badge variant='success'>
+          <i className='fas fa-check'></i> Finished
+        </Badge>
+      );
+    } else if (statut == "in_progress") {
+      return (
+        <Badge variant='success'>
+          <i className='fas fa-times'></i> In Progress
+        </Badge>
+      );
+    } else if (statut == "to_do") {
+      return (
+        <Badge variant='success'>
+          <i className='fas fa-times'></i> To Do
+        </Badge>
+      );
+    }
+  };
+
   return (
     <div className='projectDetail'>
       {data && (
@@ -140,26 +169,13 @@ const Project = () => {
           <div className='projectDetail__header'>
             <h1 className='projectDetail__heading'>{data?.name} </h1>
             <div className='projectDetail__badges'>
-              {data?.category && (
+              {data?.categories_strings && (
                 <Badge variant='info'>
-                  <i className='fas fa-code'></i> {data?.category}
+                  <i className='fas fa-code'></i> {data?.categories_strings}
                 </Badge>
               )}
-              {data?.react && (
-                <Badge variant='primary'>
-                  {" "}
-                  <i className='fab fa-react'></i> react
-                </Badge>
-              )}
-              {data?.finie ? (
-                <Badge variant='success'>
-                  <i className='fas fa-check'></i> terminé
-                </Badge>
-              ) : (
-                <Badge variant='danger'>
-                  <i className='fas fa-times'></i> terminé
-                </Badge>
-              )}
+
+              {statut_badge(data?.statut)}
             </div>
           </div>
 

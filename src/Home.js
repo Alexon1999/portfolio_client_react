@@ -31,10 +31,18 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ease: "easeIn", duration: 1 }}
           className='heading'>
-          <p>Bonjour ! Je suis Alexon , Front/Back End Développeur</p>
+          <p
+            style={{
+              margin: 0,
+              padding: 0,
+            }}>
+            Bonjour !
+          </p>
+          <p>Je suis Alexon, Développeur Full Stack & DevOps</p>
           <h1>
-            Je vais vous aider à créer votre projet de rêve et cultiver des
-            liens entre votre produit et vos utilisateurs
+            Je vous accompagne tout au long du cycle de vie de vos systèmes
+            d'information, en vous offrant une expertise complète et
+            personnalisée
           </h1>
         </motion.div>
 
