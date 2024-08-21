@@ -92,7 +92,7 @@ const Contact = () => {
 
     try {
       const { data } = await axios.post(
-        "/post-email",
+        "/api/post-email",
         {
           email: email.value,
           name: name.value,

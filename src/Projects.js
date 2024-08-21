@@ -26,10 +26,10 @@ const Projects = () => {
     return params;
   }, [categoriesQuery, orderBy, order]);
 
-  const { data: categories } = useDatabase("/categories", {
+  const { data: categories } = useDatabase("/api/categories", {
     method: "GET",
   });
-  const { data: projects } = useDatabase("/projects", {
+  const { data: projects } = useDatabase("/api/projects", {
     method: "GET",
     queryParams,
   });
