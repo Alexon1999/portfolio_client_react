@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { Collapse, Button, Badge } from "react-bootstrap";
 import { IconButton } from "@material-ui/core";
+import useApi from "./hooks/useApi";
 
 const langagesObject = {
   html: { type: "itag", src: "fab fa-html5 fa-3x" },
@@ -89,44 +90,30 @@ const Project = () => {
     "Projet GSB",
   ];
 
+  const { data: projectDetails } = useApi("/api/projects/:id", {
+    method: "GET",
+    urlParams: { id: params.id },
+  });
+
+  console.log(projectDetails);
+
   useEffect(() => {
     // let cancelToken1 = axios.CancelToken.source();
+    if (projectDetails) {
+      const categories_strings = projectDetails.categories
+        .map((category) => category.name)
+        .join(" ");
 
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(
-          `/projects/${params.id}`
-          // {
-          //   cancelToken: cancelToken1.token,
-          // }
-        );
-
-        console.log(data);
-
-        const categories_strings = data.categories
-          .map((category) => category.name)
-          .join(" ");
-
-        setData({
-          ...data,
-          categories_strings,
-        });
-        setLangagesBackends({
-          ...langagesBackends,
-          ...getLesLangagesBackends(data),
-        });
-      } catch (err) {
-        // if (axios.isCancel(err)) return;
-        console.log(err?.response?.data?.msg);
-      }
-    };
-
-    fetchData();
-
-    // return () => {
-    //   cancelToken1 && cancelToken1.cancel();
-    // };
-  }, [params.id]);
+      setData({
+        ...projectDetails,
+        categories_strings,
+      });
+      setLangagesBackends({
+        ...langagesBackends,
+        ...getLesLangagesBackends(projectDetails),
+      });
+    }
+  }, [projectDetails]);
 
   useEffect(() => {
     if (noWebpage.includes(data?.name)) {

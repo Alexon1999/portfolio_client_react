@@ -1,9 +1,15 @@
 import { useEffect, useState, useMemo } from "react";
 import axios from "../axios/axios";
 
-function useDatabase(
+function useApi(
   baseUrl,
-  { method = "GET", queryParams = {}, payload = null, headers = {} } = {}
+  {
+    method = "GET",
+    queryParams = {},
+    payload = null,
+    headers = {},
+    urlParams = {},
+  } = {}
 ) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,6 +22,10 @@ function useDatabase(
   );
   const memoizedPayload = useMemo(() => payload, [JSON.stringify(payload)]);
   const memoizedHeaders = useMemo(() => headers, [JSON.stringify(headers)]);
+  const memoizedUrlParams = useMemo(
+    () => urlParams,
+    [JSON.stringify(urlParams)]
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +35,17 @@ function useDatabase(
 
         // Build query string from memoizedQueryParams
         const queryString = new URLSearchParams(memoizedQueryParams).toString();
-        const url = `${baseUrl}?${queryString}`;
+
+        // Build the final URL with urlParams
+        let finalUrl = baseUrl;
+
+        // Append urlParams to the baseUrl (e.g., baseUrl/:id)
+        for (const [key, value] of Object.entries(memoizedUrlParams)) {
+          finalUrl = finalUrl.replace(`:${key}`, value);
+        }
+
+        // Add query string to final URL if queryParams exist
+        const url = queryString ? `${finalUrl}?${queryString}` : finalUrl;
 
         // Configure Axios request
         const config = {
@@ -48,9 +68,16 @@ function useDatabase(
     };
 
     fetchData();
-  }, [baseUrl, method, memoizedQueryParams, memoizedPayload, memoizedHeaders]);
+  }, [
+    baseUrl,
+    method,
+    memoizedQueryParams,
+    memoizedPayload,
+    memoizedHeaders,
+    memoizedUrlParams,
+  ]);
 
   return { data, loading, error };
 }
 
-export default useDatabase;
+export default useApi;

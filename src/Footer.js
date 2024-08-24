@@ -1,13 +1,41 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 const Footer = () => {
   const upBtn = useRef(null);
   const alerts = useSelector((state) => state.alerts);
   const dispatch = useDispatch();
+
+  const copyPhoneNumber = () => {
+    const textArea = document.createElement("textarea");
+    textArea.innerHTML = "0033768595182";
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+
+    textArea.remove();
+
+    const id = uuidv4();
+
+    dispatch({
+      type: "COPIED",
+      payload: {
+        id,
+        sended: true,
+        message: "copié dans votre presse-pappier",
+      },
+    });
+
+    setTimeout(() => {
+      dispatch({
+        type: "REMOVE_TO_ALERT",
+        payload: id,
+      });
+    }, 5000);
+  };
 
   useEffect(() => {
     // const upBtn = document.querySelector('.upBtn');
@@ -24,29 +52,29 @@ const Footer = () => {
     }
 
     document.addEventListener(
-      'wheel',
+      "wheel",
       throttle((e) => {
         // console.log(e.deltaY);
         if (window.scrollY >= 300) {
           if (e.deltaY < 0) {
             // upBtn.style.display = 'block';
-            upBtn.current.classList.add('show');
+            upBtn.current.classList.add("show");
           } else {
-            upBtn.current.classList.remove('show');
+            upBtn.current.classList.remove("show");
           }
         } else {
-          upBtn.current.classList.remove('show');
+          upBtn.current.classList.remove("show");
         }
       }, 800)
     );
     document.addEventListener(
-      'touchmove',
+      "touchmove",
       throttle((e) => {
         if (e.deltaY < 0) {
           // upBtn.style.display = 'block';
-          upBtn.current.classList.add('show');
+          upBtn.current.classList.add("show");
         } else {
-          upBtn.current.classList.remove('show');
+          upBtn.current.classList.remove("show");
         }
       }, 800)
     );
@@ -56,21 +84,23 @@ const Footer = () => {
 
       window.scroll({
         top: 0,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
 
-      upBtn.current.classList.remove('show');
+      upBtn.current.classList.remove("show");
     };
 
-    upBtn.current.addEventListener('click', ScrollUpBtn);
+    upBtn.current.addEventListener("click", ScrollUpBtn);
 
     const up = upBtn.current;
     return () => {
-      window.removeEventListener('touchmove', throttle);
-      window.removeEventListener('wheel', throttle);
-      up && up.removeEventListener('click', ScrollUpBtn);
+      window.removeEventListener("touchmove", throttle);
+      window.removeEventListener("wheel", throttle);
+      up && up.removeEventListener("click", ScrollUpBtn);
     };
   }, []);
+
+  const test = "ihi";
 
   return (
     <>
@@ -84,35 +114,10 @@ const Footer = () => {
             <i className='fas fa-envelope'></i>
           </a>
           <a
-            target='_blank'
+            href='javascript:void(0);'
+            target='_self'
             rel='noopener noreferrer'
-            onClick={() => {
-              const textArea = document.createElement('textarea');
-              textArea.innerHTML = '0033768595182';
-              document.body.appendChild(textArea);
-              textArea.select();
-              document.execCommand('copy');
-
-              textArea.remove();
-
-              const id = uuidv4();
-
-              dispatch({
-                type: 'COPIED',
-                payload: {
-                  id,
-                  sended: true,
-                  message: 'copié dans votre presse-pappier',
-                },
-              });
-
-              setTimeout(() => {
-                dispatch({
-                  type: 'REMOVE_TO_ALERT',
-                  payload: id,
-                });
-              }, 5000);
-            }}>
+            onClick={copyPhoneNumber}>
             <i className='fas fa-phone-alt'></i>
           </a>
           <a

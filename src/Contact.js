@@ -140,6 +140,7 @@ const Contact = () => {
     <section className='form_submission'>
       <div className='container'>
         <form method='post' onSubmit={handlSubmit} className='form'>
+          <h1 className='form_submission__heading'>Contactez-moi</h1>
           <div className='field'>
             <p className='control has-icons-left has-icons-right'>
               <input

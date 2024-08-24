@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import GithubCalendar from "github-calendar";
 import FlipMove from "react-flip-move";
-import useDatabase from "./hooks/useDatabase";
+import useApi from "./hooks/useApi";
 
 const Projects = () => {
   const heading = useRef(null);
@@ -26,10 +26,10 @@ const Projects = () => {
     return params;
   }, [categoriesQuery, orderBy, order]);
 
-  const { data: categories } = useDatabase("/api/categories", {
+  const { data: categories } = useApi("/api/categories", {
     method: "GET",
   });
-  const { data: projects } = useDatabase("/api/projects", {
+  const { data: projects } = useApi("/api/projects", {
     method: "GET",
     queryParams,
   });

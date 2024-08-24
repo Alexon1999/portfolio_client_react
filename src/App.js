@@ -13,7 +13,7 @@ import ProjectDetail from "./ProjectDetail";
 import Alerts from "./alerts/Alerts";
 import AboutMe from "./AboutMe/AboutMe";
 import MyActivity from "./MyActivity";
-// import useDatabase from './hooks/useDatabase';
+// import useApi from './hooks/useApi';
 
 const exitAnimation = {
   from: {
@@ -33,7 +33,7 @@ const exitAnimation = {
 
 function App() {
   // const [category, setCategory] = useState('tous');
-  // const data = useDatabase(category);
+  // const data = useApi(category);
 
   const location = useLocation();
 
