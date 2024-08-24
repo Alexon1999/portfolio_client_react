@@ -9,6 +9,7 @@ import { addToAlert } from "./redux/actionCreator";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { useDispatch, useSelector } from "react-redux";
+import "./bulma.css";
 
 const Contact = () => {
   // const [contactFields, setContactFields] = useState({

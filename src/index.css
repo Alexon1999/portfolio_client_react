@@ -520,8 +520,19 @@ section.home_section .mobile_container {
   margin-bottom: 25px;
   font-weight: bold;
   letter-spacing: 1px;
+  position: relative;
   /* text-transform: uppercase; */
 }
+
+.form_submission__heading::after {
+  content: "";
+  display: block;
+  width: 50%; /* Adjust width as needed */
+  height: 2px; /* Thickness of the line */
+  background-color: #3f5ee9; /* Same color as the heading */
+  margin: 15px auto 0 auto; /* Space above the line and center it */
+}
+
 .form_submission .container .form {
   padding: 2rem;
 }

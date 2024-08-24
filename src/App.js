@@ -13,6 +13,7 @@ import ProjectDetail from "./ProjectDetail";
 import Alerts from "./alerts/Alerts";
 import AboutMe from "./AboutMe/AboutMe";
 import MyActivity from "./MyActivity";
+import ScrollToTop from "./ScrollToTop";
 // import useApi from './hooks/useApi';
 
 const exitAnimation = {
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <div className='App'>
+      <ScrollToTop />
       <Alerts />
       <Loader />
       <Navbar />
