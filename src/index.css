@@ -10,14 +10,6 @@ body * {
   transition: background 0.3s;
 }
 
-.container {
-  max-width: 1100px;
-  overflow: hidden;
-  margin: auto;
-  padding: 0.2rem 1rem 1rem;
-  width: 95%;
-}
-
 h1,
 h2,
 h3,
@@ -687,7 +679,7 @@ section.home_section .mobile_container {
 
 @media (max-width: 664px) {
   .work_section-container .work_menu {
-    margin: 1rem 0 2rem;
+    margin: 2.5rem 0 1.5rem;
   }
 }
 

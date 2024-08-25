@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import GithubCalendar from "github-calendar";
 import FlipMove from "react-flip-move";
 import useApi from "./hooks/useApi";
+import { Spinner } from "react-bootstrap";
 
 const Projects = () => {
   const heading = useRef(null);
@@ -26,10 +27,18 @@ const Projects = () => {
     return params;
   }, [categoriesQuery, orderBy, order]);
 
-  const { data: categories } = useApi("/api/categories", {
+  const {
+    data: categories,
+    loading: categoriesLoading,
+    error: categoriesError,
+  } = useApi("/api/categories", {
     method: "GET",
   });
-  const { data: projects } = useApi("/api/projects", {
+  const {
+    data: projects,
+    loading: projectsLoading,
+    error: projectsError,
+  } = useApi("/api/projects", {
     method: "GET",
     queryParams,
   });
@@ -47,17 +56,18 @@ const Projects = () => {
 
     window.addEventListener("scroll", scrollHead);
 
-    const githubText = async () => {
+    const showGithubCalendar = async () => {
       // push calendar to the div with class of calendar
       // await GithubCalendar(".calendar", "Alexon1999", {
       //   responsive: true,
       // });
       GithubCalendar(githubCalendar.current, "Alexon1999", {
         responsive: true,
+        tooltips: true,
       });
     };
 
-    githubText();
+    showGithubCalendar();
 
     return () => {
       window.removeEventListener("scroll", scrollHead);
@@ -93,23 +103,7 @@ const Projects = () => {
   };
 
   const goToGithub = (e) => {
-    if (
-      e.target.classList.contains("calendar") ||
-      e.target.parentElement.classList.contains("calendar") ||
-      e.target.parentElement.parentElement.classList.contains("calendar")
-    ) {
-      // querySelector return html or null
-      // const a = document.querySelector(
-      //   "#projects > div > div.calendar > div.position-relative > div > div.contrib-footer.clearfix.mt-1.mx-3.px-3.pb-1 > div.float-left.text-gray > a"
-      // );
-      // window.location.href = a.href;
-
-      // console.log(a);
-
-      // + New tab
-      // window.open(a?.href || "https://github.com/Alexon1999", "_blank");
-      window.open("https://github.com/Alexon1999", "_blank");
-    }
+    window.open("https://github.com/Alexon1999", "_blank");
   };
 
   const getProjectDetail = (id) => () => {
@@ -136,33 +130,43 @@ const Projects = () => {
           className='calendar'
           ref={githubCalendar}></motion.div>
 
-        <div className='work_menu'>
-          <motion.a
-            onClick={handleClick("")}
-            className='btn work_btn btn_primary'>
-            Tous
-          </motion.a>
-
-          {categories?.map((category) => (
+        {/* Display loader, error, or content for categories */}
+        {categoriesLoading && <Spinner animation='border' variant='primary' />}
+        {categoriesError && (
+          <div>Error loading categories: {categoriesError}</div>
+        )}
+        {!categoriesLoading && !categoriesError && (
+          <div className='work_menu'>
             <motion.a
-              key={category._id}
-              onClick={handleClick(category._id)}
-              className='btn work_btn'>
-              {category?.name}
+              onClick={handleClick("")}
+              className='btn work_btn btn_primary'>
+              Tous
             </motion.a>
-          ))}
-        </div>
+            {categories?.map((category) => (
+              <motion.a
+                key={category._id}
+                onClick={handleClick(category._id)}
+                className='btn work_btn'>
+                {category?.name}
+              </motion.a>
+            ))}
+          </div>
+        )}
 
-        {/* <div className='my_works'> */}
-        <FlipMove className='my_works'>
-          {projectsTransformed?.map((project) => (
-            <Project
-              key={project._id}
-              project={project}
-              getProjectDetail={getProjectDetail}
-            />
-          ))}
-        </FlipMove>
+        {/* Display loader, error, or content for projects */}
+        {projectsLoading && <Spinner animation='border' variant='primary' />}
+        {projectsError && <div>Error loading projects: {projectsError}</div>}
+        {!projectsLoading && !projectsError && (
+          <FlipMove className='my_works'>
+            {projectsTransformed?.map((project) => (
+              <Project
+                key={project._id}
+                project={project}
+                getProjectDetail={getProjectDetail}
+              />
+            ))}
+          </FlipMove>
+        )}
 
         {/* <div className='card'>
             <div className='img-container'>
