@@ -5,7 +5,7 @@ import loader2 from "./imgs/chargement.gif";
 
 import { AnimatePresence, motion } from "framer-motion";
 
-const Loader = () => {
+const PageLoader = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -44,4 +44,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default PageLoader;

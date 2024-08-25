@@ -3,7 +3,7 @@ import React from "react";
 import { useLocation, Switch, Route } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
-import Loader from "./Loader";
+import PageLoader from "./PageLoader";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Projects from "./Projects";
@@ -42,7 +42,7 @@ function App() {
     <div className='App'>
       <ScrollToTop />
       <Alerts />
-      <Loader />
+      <PageLoader />
       <Navbar />
 
       {/* <AnimatePresence exitBeforeEnter> */}
