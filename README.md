@@ -45,19 +45,6 @@ firebase serve # Start the local server, use this before deploy
 firebase deploy
 ```
 
-### CI/CD pipeline to automate Integration and Deployment
-
-We use Github Actions as our CI/CD tool as we use Github, it is all integrated well.
-
-- We need to create Github workflows and deployment.yml for write our CI/CD jobs
-- Deployment with Firbase requires CI tokens
-```bash
-firebase login:ci # to get CI token and store token into your CI environment
-firebase deploy --token "$FIREBASE_TOKEN"
-```
-- Create Github environment in settings and add CI/CD secrets variables on the specific environment
-- Now, in the `deployment.yml``, we can specify the branch and the environment we want to use to deploy the app.
-
 ### Setting Up a CI/CD Pipeline for Automated Integration and Deployment
 
 We'll use GitHub Actions for our CI/CD pipeline since it integrates seamlessly with GitHub. Here's how you can set it up:
