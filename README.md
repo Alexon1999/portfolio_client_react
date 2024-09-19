@@ -39,6 +39,10 @@ firebase login
 firebase init
 firebase serve # # Start the local server, use this before deploy
 firebase deploy
+
+# deployment on CI
+firebase login:ci # to get CI token and store token into your CI environment
+firebase deploy --token "$FIREBASE_TOKEN"
 ```
 
 
