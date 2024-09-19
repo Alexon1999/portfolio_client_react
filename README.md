@@ -31,20 +31,53 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+**Serve the app on a local server:**
+```bash
+serve -s build
+```
 
 ### Firebase Deployment
 
 ```bash
 firebase login
 firebase init
-firebase serve # # Start the local server, use this before deploy
+firebase serve # Start the local server, use this before deploy
 firebase deploy
+```
 
-# deployment on CI
+### CI/CD pipeline to automate Integration and Deployment
+
+We use Github Actions as our CI/CD tool as we use Github, it is all integrated well.
+
+- We need to create Github workflows and deployment.yml for write our CI/CD jobs
+- Deployment with Firbase requires CI tokens
+```bash
 firebase login:ci # to get CI token and store token into your CI environment
 firebase deploy --token "$FIREBASE_TOKEN"
 ```
+- Create Github environment in settings and add CI/CD secrets variables on the specific environment
+- Now, in the `deployment.yml``, we can specify the branch and the environment we want to use to deploy the app.
 
+### Setting Up a CI/CD Pipeline for Automated Integration and Deployment
+
+We'll use GitHub Actions for our CI/CD pipeline since it integrates seamlessly with GitHub. Here's how you can set it up:
+
+##### Steps to Create a CI/CD Pipeline
+
+1. **Create GitHub Workflows**:
+   - Define your CI/CD jobs in a GitHub Actions workflow file. Typically, this file is named `deployment.yml` and placed in the `.github/workflows` directory in your repository.
+
+2. **Firebase Deployment with CI Tokens**:
+   - Firebase requires a CI token for deployment in a CI/CD environment. Generate a token using the Firebase CLI:
+    ```bash
+    firebase login:ci # to get CI token and store token into your CI environment
+    firebase deploy --token "$FIREBASE_TOKEN"
+    ```
+3. **Configure GitHub Environments and Secrets:**
+  - In your repository's settings, create an environment (e.g., "production").
+  - Add your CI/CD secrets to this environment, such as FIREBASE_TOKEN.
+4. **Specify Branch and Environment in Workflow:**
+   - In `deployment.yml`, specify which branch should trigger the deployment and which environment to use. This helps control which code gets deployed and where.
 
 ### `npm run eject`
 
