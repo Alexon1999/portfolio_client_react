@@ -131,7 +131,13 @@ const Projects = () => {
           ref={githubCalendar}></motion.div>
 
         {/* Display loader, error, or content for categories */}
-        {categoriesLoading && <Spinner animation='border' variant='primary' />}
+        {categoriesLoading && (
+          <Spinner
+            animation='border'
+            variant='primary'
+            style={{ margin: "15px" }}
+          />
+        )}
         {categoriesError && (
           <div>Error loading categories: {categoriesError}</div>
         )}
@@ -154,7 +160,13 @@ const Projects = () => {
         )}
 
         {/* Display loader, error, or content for projects */}
-        {projectsLoading && <Spinner animation='border' variant='primary' />}
+        {projectsLoading && (
+          <Spinner
+            animation='border'
+            variant='primary'
+            style={{ marginTop: "15px" }}
+          />
+        )}
         {projectsError && <div>Error loading projects: {projectsError}</div>}
         {!projectsLoading && !projectsError && (
           <FlipMove className='my_works'>
