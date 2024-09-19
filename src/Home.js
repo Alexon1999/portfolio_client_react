@@ -86,6 +86,10 @@ const Home = () => {
         <div className='mouse-icon'>
           <span className='mouse-wheel'></span>
         </div>
+
+        <div className='mouse-text'>
+          <span className='mouse-text-content'>scroll down</span>
+        </div>
       </div>
 
       <div className='mobile_container'>
