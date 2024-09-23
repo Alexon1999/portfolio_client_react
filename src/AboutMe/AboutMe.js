@@ -139,20 +139,17 @@ const AboutMe = () => {
                 </ul>
               </p>
 
-              <p>
-                Toujours en quête de nouveaux défis, je cherche constamment à
-                progresser dans ma carrière. N'hésitez pas à consulter mon
-                profil GitHub pour découvrir certains de mes projets.
-              </p>
-
               <hr />
 
               <h4 className='heading heading_4'>Mon Objectif</h4>
 
               <p>
                 Toujours en quête de nouveaux défis, je cherche constamment à
-                progresser dans ma carrière. N'hésitez pas à consulter mon
-                profil GitHub ou mon CV pour découvrir certains de mes projets.
+                progresser dans ma carrière.
+              </p>
+              <p>
+                N'hésitez pas à consulter mon profil GitHub ou mon CV pour
+                découvrir certains de mes projets.
                 <a
                   className='link_a'
                   style={{ marginLeft: "1rem" }}
@@ -196,6 +193,7 @@ const AboutMe = () => {
                   <li>Kubernetes</li>
                   <li>Helm Charts</li>
                   <li>Gitlab CI</li>
+                  <li>Gitlab Actions</li>
                   <li>Prometheus</li>
                   <li>Grafana</li>
                   <li>Loki</li>
