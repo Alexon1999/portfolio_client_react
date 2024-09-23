@@ -193,7 +193,7 @@ const AboutMe = () => {
                   <li>Kubernetes</li>
                   <li>Helm Charts</li>
                   <li>Gitlab CI</li>
-                  <li>Gitlab Actions</li>
+                  <li>Github Actions</li>
                   <li>Prometheus</li>
                   <li>Grafana</li>
                   <li>Loki</li>
