@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import mobile from "./imgs/mobile.png";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useHistory } from "react-router-dom";
+
+const activities = ["Développeur Full Stack", "DevOps"];
 
 const Home = () => {
   const history = useHistory();
+  const [activityIndex, setActivityIndex] = useState(0);
+  const [headingAnimationComplete, setHeadingAnimationComplete] =
+    useState(false);
 
   const handleHlick = (e) => {
     e.preventDefault();
@@ -23,6 +28,16 @@ const Home = () => {
     });
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActivityIndex((prevIndex) =>
+        prevIndex === activities.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [headingAnimationComplete]);
+
   return (
     <section className='home_section'>
       <div className='section_content'>
@@ -30,16 +45,24 @@ const Home = () => {
           initial={{ opacity: 0, y: "-150px" }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ease: "easeIn", duration: 1 }}
+          onAnimationComplete={() => setHeadingAnimationComplete(true)}
           className='heading'>
-          <p
-            style={{
-              margin: 0,
-              padding: 0,
-            }}>
-            Bonjour !
+          <p className='heading__greeting'>Bonjour !</p>
+          <p className='heading__presentation'>
+            Je suis Alexon,{" "}
+            <AnimatePresence exitBeforeEnter>
+              <motion.span
+                className='heading__presentation__activity'
+                key={activityIndex}
+                initial={{ opacity: 0, y: "-20px" }}
+                animate={{ opacity: 1, y: "0px" }}
+                exit={{ opacity: 0, y: "20px" }}
+                transition={{ duration: 0.5, ease: "easeInOut", delay: 0.1 }}>
+                {activities[activityIndex]}
+              </motion.span>
+            </AnimatePresence>
           </p>
-          <p>Je suis Alexon, Développeur Full Stack & DevOps</p>
-          <h1>
+          <h1 className='heading__text'>
             Je vous accompagne tout au long du cycle de vie de vos systèmes
             d'information, en vous offrant une expertise complète et
             personnalisée

@@ -333,16 +333,32 @@ section.home_section .section_content .navigation .btn {
 section.home_section .section_content .heading {
   margin-bottom: 2rem;
 }
-section.home_section .section_content .heading h1 {
+section.home_section .section_content .heading .heading__text {
   font-size: 2.1rem;
   font-weight: 900 !important;
   margin-bottom: 1.3rem;
   letter-spacing: 0.5px;
 }
-section.home_section .section_content .heading p {
+section.home_section .section_content .heading .heading__greeting,
+section.home_section .section_content .heading .heading__presentation {
   font-size: 1.5rem;
   color: #545151;
   letter-spacing: 2px;
+}
+section.home_section .section_content .heading .heading__greeting {
+  margin: 0;
+  padding: 0;
+}
+section.home_section
+  .section_content
+  .heading
+  .heading__presentation__activity {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  border-bottom: 2.5px solid #264aca;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 section.home_section .mobile_container {
   display: none;
