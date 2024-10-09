@@ -1,8 +1,60 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Description
+Personal Portfolio Website.
+
+## Tech Stack
+- React
+- Firebase
+- Material-UI
+- React Router
+- Redux
+- Framer Motion
+- Bulma
+- Bootstrap
+
 ## Development Tools Versions
 - node v16.3.0
 - npm 7.5.2
+
+## Firebase
+
+We use Firebase for hosting and deployment. To deploy the app, you need to have a Firebase account and the Firebase CLI installed. Also we use Firebase Analytics to track user interactions and events.
+
+### Firebase Deployment
+
+```bash
+firebase login
+firebase init
+firebase serve # Start the local server, use this before deploy
+firebase deploy
+```
+
+### Firebase Analytics
+
+Firebase Analytics is a free app measurement solution that provides insights on app usage and user engagement. It enables you to understand how users interact with your app, and helps you make data-driven decisions to grow your business.
+
+
+## Setting Up a CI/CD Pipeline for Automated Integration and Deployment
+
+We'll use GitHub Actions for our CI/CD pipeline since it integrates seamlessly with GitHub. Here's how you can set it up:
+
+##### Steps to Create a CI/CD Pipeline
+
+1. **Create GitHub Workflows**:
+   - Define your CI/CD jobs in a GitHub Actions workflow file. Typically, this file is named `deployment.yml` and placed in the `.github/workflows` directory in your repository.
+
+2. **Firebase Deployment with CI Tokens**:
+   - Firebase requires a CI token for deployment in a CI/CD environment. Generate a token using the Firebase CLI:
+    ```bash
+    firebase login:ci # to get CI token and store token into your CI environment
+    firebase deploy --token "$FIREBASE_TOKEN"
+    ```
+3. **Configure GitHub Environments and Secrets:**
+  - In your repository's settings, create an environment (e.g., "production").
+  - Add your CI/CD secrets to this environment, such as FIREBASE_TOKEN.
+4. **Specify Branch and Environment in Workflow:**
+   - In `deployment.yml`, specify which branch should trigger the deployment and which environment to use. This helps control which code gets deployed and where.
 
 ## Available Scripts
 
@@ -35,36 +87,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ```bash
 serve -s build
 ```
-
-### Firebase Deployment
-
-```bash
-firebase login
-firebase init
-firebase serve # Start the local server, use this before deploy
-firebase deploy
-```
-
-### Setting Up a CI/CD Pipeline for Automated Integration and Deployment
-
-We'll use GitHub Actions for our CI/CD pipeline since it integrates seamlessly with GitHub. Here's how you can set it up:
-
-##### Steps to Create a CI/CD Pipeline
-
-1. **Create GitHub Workflows**:
-   - Define your CI/CD jobs in a GitHub Actions workflow file. Typically, this file is named `deployment.yml` and placed in the `.github/workflows` directory in your repository.
-
-2. **Firebase Deployment with CI Tokens**:
-   - Firebase requires a CI token for deployment in a CI/CD environment. Generate a token using the Firebase CLI:
-    ```bash
-    firebase login:ci # to get CI token and store token into your CI environment
-    firebase deploy --token "$FIREBASE_TOKEN"
-    ```
-3. **Configure GitHub Environments and Secrets:**
-  - In your repository's settings, create an environment (e.g., "production").
-  - Add your CI/CD secrets to this environment, such as FIREBASE_TOKEN.
-4. **Specify Branch and Environment in Workflow:**
-   - In `deployment.yml`, specify which branch should trigger the deployment and which environment to use. This helps control which code gets deployed and where.
 
 ### `npm run eject`
 
