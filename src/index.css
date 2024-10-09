@@ -78,6 +78,15 @@ img {
 }
 .work_btn {
   font-size: 1rem;
+  font-weight: 450;
+}
+.work_btn:focus,
+.work_btn:active {
+  border: none;
+  outline: 0;
+}
+.work_btn:hover:not(.active) {
+  color: #1e90ff;
 }
 .btn_block {
   display: block !important;

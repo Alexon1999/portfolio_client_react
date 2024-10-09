@@ -92,11 +92,11 @@ const Projects = () => {
 
     const btns = document.querySelectorAll(".work_menu > .btn");
     btns.forEach((b) => {
-      b.classList.remove("btn_primary");
+      b.classList.remove("btn_primary", "active");
     });
 
-    if (!e.target.classList.contains("btn_primary")) {
-      e.target.classList.add("btn_primary");
+    if (!e.target.classList.contains("btn_primary", "active")) {
+      e.target.classList.add("btn_primary", "active");
     }
 
     setCategoriesQuery(type);
@@ -143,18 +143,18 @@ const Projects = () => {
         )}
         {!categoriesLoading && !categoriesError && (
           <div className='work_menu'>
-            <motion.a
+            <motion.button
               onClick={handleClick("")}
               className='btn work_btn btn_primary'>
               Tous
-            </motion.a>
+            </motion.button>
             {categories?.map((category) => (
-              <motion.a
+              <motion.button
                 key={category._id}
                 onClick={handleClick(category._id)}
                 className='btn work_btn'>
                 {category?.name}
-              </motion.a>
+              </motion.button>
             ))}
           </div>
         )}
