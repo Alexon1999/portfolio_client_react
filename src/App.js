@@ -16,7 +16,6 @@ import MyActivity from "./MyActivity";
 import ScrollToTop from "./ScrollToTop";
 // import useApi from './hooks/useApi';
 import { routeTitles } from "./routeTitles";
-import { updatePageTitle } from "./utils";
 import { logPageViewAnalytics } from "./utils/analytics";
 
 const exitAnimation = {

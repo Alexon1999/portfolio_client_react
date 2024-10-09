@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import { Badge } from "react-bootstrap";
 
 const Project = forwardRef(({ project, getProjectDetail }, ref) => {
   return (
