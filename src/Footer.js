@@ -111,36 +111,37 @@ const Footer = () => {
 
         <div className='social_media'>
           <a
+            className='social_media__links'
             href="mailto:alexon1999@gmail.com?subject=Plus d'information"
             aria-label='envoie email'>
             <i className='fas fa-envelope'></i>
           </a>
-          <a
-            href='javascript:void(0);'
-            target='_self'
-            rel='noopener noreferrer'
-            onClick={copyPhoneNumber}>
+          <div className='social_media__links' onClick={copyPhoneNumber}>
             <i className='fas fa-phone-alt'></i>
-          </a>
+          </div>
           <a
+            className='social_media__links'
             target='_blank'
             rel='noopener noreferrer'
             href='https://www.linkedin.com/in/alexon-uthayakumar-9361221a2/'>
             <i className='fab fa-linkedin-in'></i>
           </a>
           <a
+            className='social_media__links'
             target='_blank'
             rel='noopener noreferrer'
             href='https://www.facebook.com/alexonjr'>
             <i className='fab fa-facebook'></i>
           </a>
           <a
+            className='social_media__links'
             target='_blank'
             rel='noopener noreferrer'
             href='https://www.instagram.com/ualexon1999/?hl=fr'>
             <i className='fab fa-instagram'></i>
           </a>
           <a
+            className='social_media__links'
             target='_blank'
             rel='noopener noreferrer'
             href='https://github.com/Alexon1999'>

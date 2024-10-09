@@ -511,10 +511,6 @@ section.home_section .mobile_container {
   justify-content: space-around;
   padding: 10px;
 }
-.footer a {
-  text-decoration: none;
-  color: #c9c9c9;
-}
 .footer .footer_content h1 {
   letter-spacing: 5px;
   font-size: 1.2rem;
@@ -526,11 +522,13 @@ section.home_section .mobile_container {
   justify-content: space-around;
   min-width: 25vw;
 }
-.footer .social_media a {
+.footer .social_media .social_media__links {
   cursor: pointer;
   font-size: 1.2rem;
+  color: #c9c9c9;
+  text-decoration: none;
 }
-.footer .social_media a:hover i {
+.footer .social_media .social_media__links:hover i {
   font-size: 2rem;
 }
 .footer .social_media i {
