@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css2?family=Montserrat&display=swap";
+/* @import "https://fonts.googleapis.com/css2?family=Montserrat&display=swap"; */
 
 * {
   margin: 0;
@@ -191,6 +191,10 @@ img {
 @font-face {
   font-family: "Poppins";
   src: url("./fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./fonts/Montserrat-Regular.ttf");
 }
 h1,
 h2,
