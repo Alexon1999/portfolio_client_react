@@ -14,8 +14,8 @@ Personal Portfolio Website.
 - Bootstrap
 
 ## Development Tools Versions
-- node v16.3.0
-- npm 7.5.2
+- node v21.7.2
+- npm 10.5.0
 
 ## Firebase
 
@@ -127,3 +127,26 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### Check outdated packages
+
+```bash
+npm outdated
+```
+
+### Update outdated packages
+
+```bash
+npx npm-check-updates -u
+
+rm -rf node_modules
+rm package-lock.json
+
+npm install
+```
+
+if any issues with the packages, you can run the following command to fix the issues:
+```bash
+npm uninstall <package-name>
+npm install <package-name>
+```
