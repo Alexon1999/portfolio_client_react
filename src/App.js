@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useLocation, Switch, Route } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -15,6 +15,9 @@ import AboutMe from "./AboutMe/AboutMe";
 import MyActivity from "./MyActivity";
 import ScrollToTop from "./ScrollToTop";
 // import useApi from './hooks/useApi';
+import { routeTitles } from "./routeTitles";
+import { updatePageTitle } from "./utils";
+import { logPageViewAnalytics } from "./utils/analytics";
 
 const exitAnimation = {
   from: {
@@ -37,6 +40,22 @@ function App() {
   // const data = useApi(category);
 
   const location = useLocation();
+
+  useEffect(() => {
+    // Determine the page title based on the current route
+    let pageTitle = routeTitles[location.pathname] || "Home"; // Default to "Home"
+
+    // Handle dynamic route like /project/:id
+    if (location.pathname.startsWith("/project/")) {
+      pageTitle = routeTitles["/project/:id"];
+    }
+
+    // Update the page title
+    updatePageTitle(pageTitle);
+
+    // Log Firebase analytics event
+    logPageViewAnalytics(pageTitle, location);
+  }, [location]);
 
   return (
     <div className='App'>

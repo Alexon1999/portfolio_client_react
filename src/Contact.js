@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { useDispatch, useSelector } from "react-redux";
 import "./bulma.css";
+import { logEventApp } from "./utils/analytics";
 
 const Contact = () => {
   // const [contactFields, setContactFields] = useState({
@@ -119,6 +120,11 @@ const Contact = () => {
         email: false,
         message: false,
       };
+
+      logEventApp("contact_form_submitted", {
+        form_name: "contact_form",
+        submission_time: new Date().toISOString(),
+      });
     } catch (err) {
       dispatch(addToAlert(err.response.data));
     }
