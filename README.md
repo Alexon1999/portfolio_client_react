@@ -12,6 +12,7 @@ Personal Portfolio Website.
 - Framer Motion
 - Bulma
 - Bootstrap
+- i18n (Internationalization) : language translation
 
 ## Development Tools Versions
 - node v21.7.2

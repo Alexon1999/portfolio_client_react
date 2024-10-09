@@ -1,26 +1,56 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import Flag from "react-world-flags";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { Box } from "@mui/material";
 
 function LanguageSwitcher() {
   const { i18n } = useTranslation();
+  const [language, setLanguage] = React.useState(i18n.language);
 
-  const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
+  const changeLanguage = (event) => {
+    setLanguage(event.target.value);
+    i18n.changeLanguage(event.target.value);
+    localStorage.setItem("language", event.target.value);
   };
 
+  const languages = [
+    {
+      code: "fr",
+      label: "Français",
+      flag: "FRA",
+    },
+    {
+      code: "en",
+      label: "English",
+      flag: "GBR",
+    },
+  ];
+
   return (
-    <div className='language-switcher'>
-      <select
-        onChange={(e) => changeLanguage(e.target.value)}
-        defaultValue={i18n.language}>
-        <option value='en'>
-          <span class='fi fi-gr'></span> <span class='fi fi-gr fis'></span>
-        </option>
-        <option value='fr'>
-          <span class='fi fi-fr'></span> <span class='fi fi-fr fis'></span>
-        </option>
-      </select>
-    </div>
+    <Box className='language-switcher' sx={{ minWidth: 100 }}>
+      <FormControl fullWidth size='small'>
+        <InputLabel id='language-select-label' sx={{ color: "#fff" }}>
+          Language
+        </InputLabel>
+        <Select
+          labelId='language-select-label'
+          id='language-select'
+          value={language}
+          label='Language'
+          color='primary'
+          onChange={changeLanguage}>
+          {languages.map((language) => (
+            <MenuItem key={language.code} value={language.code}>
+              <Flag code={language.flag} height='15' />
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
   );
 }
 

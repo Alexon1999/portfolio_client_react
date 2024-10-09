@@ -15,25 +15,11 @@ import MyActivity from "./MyActivity";
 import ScrollToTop from "./ScrollToTop";
 import { routeTitles } from "./routeTitles";
 import { logPageViewAnalytics } from "./utils/analytics";
-
-const exitAnimation = {
-  from: {
-    x: "100vw",
-  },
-  to: {
-    x: 0,
-    transition: {
-      delay: 1,
-    },
-  },
-  exit: {
-    x: 400,
-    ease: "ease",
-  },
-};
+import { useTranslation } from "react-i18next";
 
 function App() {
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     let pageTitle = routeTitles[location.pathname] || "Home"; // Default to "Home"
@@ -53,6 +39,8 @@ function App() {
       <Alerts />
       <PageLoader />
       <Navbar />
+
+      <h1>{t("introduction")}</h1>
 
       <Routes>
         <Route
