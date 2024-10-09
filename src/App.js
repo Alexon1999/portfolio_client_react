@@ -50,9 +50,6 @@ function App() {
       pageTitle = routeTitles["/project/:id"];
     }
 
-    // Update the page title
-    updatePageTitle(pageTitle);
-
     // Log Firebase analytics event
     logPageViewAnalytics(pageTitle, location);
   }, [location]);
