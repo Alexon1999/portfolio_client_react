@@ -1,12 +1,12 @@
 import React from "react";
-import { Badge } from "react-bootstrap";
+import Badge from "react-bootstrap/Badge";
 
 function MyActivity() {
   return (
     <div className='my_activity'>
       <div className='my_activity__card'>
         <div className='my_activity__icon'>
-          <Badge variant='primary'>
+          <Badge bg='primary'>
             <i className='fas fa-calendar-alt'></i>
           </Badge>
         </div>
@@ -19,7 +19,7 @@ function MyActivity() {
       </div>
       <div className='my_activity__card'>
         <div className='my_activity__icon'>
-          <Badge variant='warning'>
+          <Badge bg='warning'>
             <i className='fas fa-lightbulb'></i>
           </Badge>
         </div>
@@ -31,7 +31,7 @@ function MyActivity() {
       </div>
       <div className='my_activity__card'>
         <div className='my_activity__icon'>
-          <Badge variant='info'>
+          <Badge bg='info'>
             <i className='fas fa-cogs'></i>
           </Badge>
         </div>
@@ -44,7 +44,7 @@ function MyActivity() {
       </div>
       <div className='my_activity__card'>
         <div className='my_activity__icon'>
-          <Badge variant='success'>
+          <Badge bg='success'>
             <i className='fas fa-laptop-code'></i>
           </Badge>
         </div>
@@ -56,7 +56,7 @@ function MyActivity() {
       </div>
       <div className='my_activity__card'>
         <div className='my_activity__icon'>
-          <Badge variant='danger'>
+          <Badge bg='danger'>
             <i className='fas fa-tools'></i>
           </Badge>
         </div>
@@ -69,7 +69,7 @@ function MyActivity() {
       </div>
       <div className='my_activity__card my_activity__card--last'>
         <div className='my_activity__icon'>
-          <Badge variant='dark'>
+          <Badge bg='dark'>
             <i className='fas fa-server'></i>
           </Badge>
         </div>

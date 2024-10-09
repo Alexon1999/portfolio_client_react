@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Svg = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     function scroll() {
-      const listPos = document.getElementById('list').getBoundingClientRect()
-        .top;
+      const listPos = document
+        .getElementById("list")
+        ?.getBoundingClientRect().top;
       const windowHeight = window.innerHeight / 1.6;
 
       // console.log('Output: windowHeight', windowHeight);
@@ -18,9 +19,9 @@ const Svg = () => {
         setShow(false);
       }
     }
-    window.addEventListener('scroll', scroll);
+    window.addEventListener("scroll", scroll);
     return () => {
-      window.removeEventListener('scroll', scroll);
+      window.removeEventListener("scroll", scroll);
     };
   }, []);
 
@@ -32,7 +33,7 @@ const Svg = () => {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'>
       <g id='revenue-graph-monochrome 1'>
-        <g className={!!show ? 'show' : ''} id='list'>
+        <g className={!!show ? "show" : ""} id='list'>
           <path
             id='Vector'
             d='M246.218 0V296.236H254.901V360.421H459.516V0H246.218Z'
@@ -115,7 +116,7 @@ const Svg = () => {
             strokeLinecap='round'
           />
         </g>
-        <g className={!!show ? 'show' : ''} id='man'>
+        <g className={!!show ? "show" : ""} id='man'>
           <g id='left_foot'>
             <g id='left'>
               <path
@@ -133,7 +134,7 @@ const Svg = () => {
               />
             </g>
           </g>
-          <g className={!!show ? 'show' : ''} id='left_hand'>
+          <g className={!!show ? "show" : ""} id='left_hand'>
             <path
               id='Vector_17'
               d='M193.491 100.406C196.681 103.053 201.663 108.118 202.743 110.245C215.399 91.9524 236.241 73.4973 237.946 71.365C239.65 69.2326 240.181 57.3532 240.181 54.7554C240.181 52.1576 243.263 45.2356 246.234 45.2356V76.382C246.234 76.382 211.358 133.236 205.616 133.236C202.655 133.236 190.399 127.282 184.234 123.424'

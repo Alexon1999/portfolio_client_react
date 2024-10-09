@@ -3,8 +3,6 @@ import ReactDom from "react-dom";
 import loader1 from "./imgs//Spinner-1s-200px.gif";
 import loader2 from "./imgs/chargement.gif";
 
-import { AnimatePresence, motion } from "framer-motion";
-
 const PageLoader = () => {
   const [loading, setLoading] = useState(true);
 
@@ -28,9 +26,9 @@ const PageLoader = () => {
 
     // navbar?.classList.add('show');
     // eslint-disable-next-line no-unused-expressions
-    app?.classList.add("show");
+    app?.classList?.add("show");
     // eslint-disable-next-line no-unused-expressions
-    loader?.classList.add("finished");
+    loader?.classList?.add("finished");
   }
 
   return ReactDom.createPortal(

@@ -54,27 +54,31 @@ const Footer = () => {
     document.addEventListener(
       "wheel",
       throttle((e) => {
-        // console.log(e.deltaY);
-        if (window.scrollY >= 300) {
-          if (e.deltaY < 0) {
-            // upBtn.style.display = 'block';
-            upBtn.current.classList.add("show");
+        if (upBtn.current) {
+          // console.log(e.deltaY);
+          if (window.scrollY >= 300) {
+            if (e.deltaY < 0) {
+              // upBtn.style.display = 'block';
+              upBtn.current.classList.add("show");
+            } else {
+              upBtn.current.classList.remove("show");
+            }
           } else {
             upBtn.current.classList.remove("show");
           }
-        } else {
-          upBtn.current.classList.remove("show");
         }
       }, 800)
     );
     document.addEventListener(
       "touchmove",
       throttle((e) => {
-        if (e.deltaY < 0) {
-          // upBtn.style.display = 'block';
-          upBtn.current.classList.add("show");
-        } else {
-          upBtn.current.classList.remove("show");
+        if (upBtn.current) {
+          if (e.deltaY < 0) {
+            // upBtn.style.display = 'block';
+            upBtn.current.classList.add("show");
+          } else {
+            upBtn.current.classList.remove("show");
+          }
         }
       }, 800)
     );

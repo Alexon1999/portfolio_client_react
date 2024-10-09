@@ -7,7 +7,7 @@ import axios from "./axios/axios";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { Collapse, Button, Badge } from "react-bootstrap";
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "@mui/material";
 import useApi from "./hooks/useApi";
 
 const langagesObject = {
@@ -268,7 +268,7 @@ const Project = () => {
 
           <Collapse in={open}>
             <div className='projectDetail__Description'>
-              <ReactMarkdown source={data?.description} />
+              <ReactMarkdown>{data?.description}</ReactMarkdown>
             </div>
           </Collapse>
         </>

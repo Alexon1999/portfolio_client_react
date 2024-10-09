@@ -5,6 +5,7 @@ import logo from "./imgs/logo.png";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import NavMobile from "./mobile/NavMobile";
+import LanguageSwitcher from "./languageSwitcher";
 
 const Navbar = () => {
   const nav = useRef(null);
@@ -91,6 +92,8 @@ const Navbar = () => {
             Contact
           </Link>
         </nav>
+
+        <LanguageSwitcher />
 
         <NavMobile />
         {/* <i className='fas fa-bars fa-2x'></i> */}

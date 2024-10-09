@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 
 import store from "./redux/Store";
 
+import "./i18n";
+
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(

@@ -5,10 +5,10 @@ import "./AboutMe.css";
 
 import MyImage from "./images/Alexon.PNG";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AboutMe = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [theme, setTheme] = useLocalStorage("light");
 
@@ -32,7 +32,7 @@ const AboutMe = () => {
               <a
                 className='link_a'
                 aria-label="Retour à la page d'accueil"
-                onClick={() => history.push("/")}>
+                onClick={() => navigate("/")}>
                 <div className='dots-wrapper'>
                   <div id='dot-1' className='browser-dot'></div>
                   <div id='dot-2' className='browser-dot'></div>
@@ -42,9 +42,7 @@ const AboutMe = () => {
 
               <ul id='navigation'>
                 <li>
-                  <a
-                    className='link_a'
-                    onClick={() => history.push("/contact")}>
+                  <a className='link_a' onClick={() => navigate("/contact")}>
                     Contact
                   </a>
                 </li>

@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import mobile from "./imgs/mobile.png";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const activities = ["Développeur Full Stack", "DevOps"];
 
 const Home = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [activityIndex, setActivityIndex] = useState(0);
   const [headingAnimationComplete, setHeadingAnimationComplete] =
     useState(false);
@@ -50,7 +50,7 @@ const Home = () => {
           <p className='heading__greeting'>Bonjour !</p>
           <p className='heading__presentation'>
             Je suis Alexon,{" "}
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence mode='wait'>
               <motion.span
                 className='heading__presentation__activity'
                 key={activityIndex}
@@ -88,7 +88,7 @@ const Home = () => {
           <motion.a
             onClick={(e) => {
               e.preventDefault();
-              history.push("/contact");
+              navigate("/contact");
             }}
             style={{ display: "inline-block" }}
             initial={{ opacity: 0, x: 100 }}
