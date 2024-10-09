@@ -29,7 +29,10 @@ const AboutMe = () => {
 
           <div className='intro-wrapper'>
             <div className='nav-wrapper'>
-              <a className='link_a' onClick={() => history.push("/")}>
+              <a
+                className='link_a'
+                aria-label="Retour à la page d'accueil"
+                onClick={() => history.push("/")}>
                 <div className='dots-wrapper'>
                   <div id='dot-1' className='browser-dot'></div>
                   <div id='dot-2' className='browser-dot'></div>
@@ -158,7 +161,10 @@ const AboutMe = () => {
                   Voir mon CV
                 </a>{" "}
                 <span>| </span>
-                <a href='https://github.com/Alexon1999' target='_blank'>
+                <a
+                  href='https://github.com/Alexon1999'
+                  target='_blank'
+                  aria-label='github'>
                   Voir Github
                 </a>
               </p>

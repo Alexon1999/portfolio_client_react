@@ -50,7 +50,7 @@ const Navbar = () => {
     <nav ref={nav} id='navbar'>
       <div className='container'>
         <div className='img-container'>
-          <Link to='/'>
+          <Link to='/' aria-label="Retour à la page d'accueil">
             <motion.img
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

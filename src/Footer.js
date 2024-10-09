@@ -110,7 +110,9 @@ const Footer = () => {
         </div>
 
         <div className='social_media'>
-          <a href="mailto:alexon1999@gmail.com?subject=Plus d'information">
+          <a
+            href="mailto:alexon1999@gmail.com?subject=Plus d'information"
+            aria-label='envoie email'>
             <i className='fas fa-envelope'></i>
           </a>
           <a
