@@ -7,8 +7,9 @@ import axios from "./axios/axios";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { Collapse, Button, Badge } from "react-bootstrap";
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "@mui/material";
 import useApi from "./hooks/useApi";
+import { useTranslation } from "react-i18next";
 
 const langagesObject = {
   html: { type: "itag", src: "fab fa-html5 fa-3x" },
@@ -89,6 +90,7 @@ const Project = () => {
     "Youtube Clone",
     "Projet GSB",
   ];
+  const { t } = useTranslation();
 
   const { data: projectDetails } = useApi("/api/projects/:id", {
     method: "GET",
@@ -250,7 +252,7 @@ const Project = () => {
               style={{ borderRadius: 5 }}
               onClick={goToPage(data?.link)}
               variant='outline-primary'>
-              Voir la page
+              {t("projectDetail.view_page_btn_text")}
             </Button>
 
             <Button
@@ -258,7 +260,9 @@ const Project = () => {
               className='collapseBtn'
               onClick={handleCollapse}
               variant='primary'>
-              {!open ? "Voir la Description" : "Cacher la Description"}
+              {!open
+                ? t("projectDetail.view_description_btn_text")
+                : t("projectDetail.hide_description_btn_text")}
             </Button>
 
             <IconButton onClick={goToPage(data?.gitRepoUrl)}>
@@ -268,7 +272,7 @@ const Project = () => {
 
           <Collapse in={open}>
             <div className='projectDetail__Description'>
-              <ReactMarkdown source={data?.description} />
+              <ReactMarkdown>{data?.description}</ReactMarkdown>
             </div>
           </Collapse>
         </>

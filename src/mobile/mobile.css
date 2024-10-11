@@ -35,6 +35,7 @@ nav.nav-mobile {
   right: 0;
   bottom: 0;
   width: 400px;
+  z-index: 9999999999;
 }
 
 .background {
@@ -44,6 +45,7 @@ nav.nav-mobile {
   bottom: 0;
   width: 400px;
   background: #33393b;
+  z-index: 9999999999;
 }
 
 nav.nav-mobile button {
@@ -54,20 +56,21 @@ nav.nav-mobile button {
   -ms-user-select: none;
   cursor: pointer;
   position: absolute;
-  top: 7px;
+  top: 12px;
   right: 15px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background: transparent;
   pointer-events: all !important;
-  /* z-index: 99999; */
+  z-index: 9999999999;
 }
 
 nav.nav-mobile ul,
 nav.nav-mobile > li {
   margin: 0;
   padding: 0;
+  z-index: 9999999999;
 }
 
 nav.nav-mobile ul {

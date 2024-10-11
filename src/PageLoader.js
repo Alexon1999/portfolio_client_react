@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ReactDom from "react-dom";
+import { createPortal } from "react-dom";
 import loader1 from "./imgs//Spinner-1s-200px.gif";
 import loader2 from "./imgs/chargement.gif";
-
-import { AnimatePresence, motion } from "framer-motion";
 
 const PageLoader = () => {
   const [loading, setLoading] = useState(true);
@@ -33,7 +31,7 @@ const PageLoader = () => {
     loader?.classList.add("finished");
   }
 
-  return ReactDom.createPortal(
+  return createPortal(
     <div className='loader' id='loader'>
       <div>
         <img src={loader1} className='img1' alt='' />

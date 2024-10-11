@@ -1,29 +1,29 @@
 const contactState = {
-  name: { value: '', valide: false },
-  email: { value: '', valide: false },
-  message: { value: '', valide: false },
+  name: { value: "", valide: false },
+  email: { value: "", valide: false },
+  message: { value: "", valide: false },
 };
 
-export default (state = contactState, action) => {
+const contactReducer = (state = contactState, action) => {
   switch (action.type) {
-    case 'email':
+    case "email":
       return {
         ...state,
         email: { ...state.email, value: action.payload },
       };
-    case 'name':
+    case "name":
       return {
         ...state,
         name: { ...state.name, value: action.payload },
       };
-    case 'message':
+    case "message":
       return {
         ...state,
         message: { ...state.message, value: action.payload },
       };
-    case 'submited':
+    case "submited":
       return contactState;
-    case 'saveValide':
+    case "saveValide":
       return {
         ...state,
         email: { ...state.email, valide: action.payload.email.valide },
@@ -34,3 +34,5 @@ export default (state = contactState, action) => {
       return state;
   }
 };
+
+export default contactReducer;

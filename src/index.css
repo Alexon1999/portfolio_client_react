@@ -397,7 +397,7 @@ section.home_section .mobile_container {
 
 .my_activity__icon {
   font-size: 40px;
-  color: #4caf50;
+  color: #fff;
   margin-bottom: 15px;
 }
 
@@ -637,6 +637,9 @@ section.home_section .mobile_container {
   } */
   #navbar .container > nav.nav-mobile {
     display: block;
+  }
+  .language-switcher {
+    margin-right: 50px;
   }
   .footer .footer_content h1 {
     font-size: 1rem;

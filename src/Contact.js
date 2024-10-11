@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import "./bulma.css";
 import { logEventApp } from "./utils/analytics";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   // const [contactFields, setContactFields] = useState({
@@ -18,6 +19,8 @@ const Contact = () => {
   //   email: '',
   //   message: '',
   // });
+
+  const { t } = useTranslation();
 
   const contactForm = useSelector((state) => state.contactForm);
   const { name, email, message } = contactForm;
@@ -147,7 +150,7 @@ const Contact = () => {
     <section className='form_submission'>
       <div className='container'>
         <form method='post' onSubmit={handlSubmit} className='form'>
-          <h1 className='form_submission__heading'>Contactez-moi</h1>
+          <h1 className='form_submission__heading'>{t("contact.title")}</h1>
           <div className='field'>
             <p className='control has-icons-left has-icons-right'>
               <input
@@ -158,7 +161,7 @@ const Contact = () => {
                 // value={contactFields.name}
                 value={name.value}
                 onChange={handleChange}
-                placeholder='Votre Nom'
+                placeholder={t("contact.form.name")}
               />
               <span className='icon is-small is-left'>
                 <i
@@ -186,7 +189,7 @@ const Contact = () => {
                 // value={contactFields.email}
                 value={email.value}
                 onChange={handleChange}
-                placeholder='Email'
+                placeholder={t("contact.form.email")}
               />
               <span className='icon is-small is-left'>
                 <i
@@ -217,7 +220,7 @@ const Contact = () => {
                 value={message.value}
                 onChange={handleChange}
                 className='textarea is-info'
-                placeholder='Message'></textarea>
+                placeholder={t("contact.form.message")}></textarea>
             </div>
           </div>
 
@@ -245,7 +248,7 @@ const Contact = () => {
                   background: "#00d1b2",
                 }}
                 className='btn btn_primary'>
-                Envoyer
+                {t("contact.form.submit_btn_text")}
               </motion.button>
             )}
           </AnimatePresence>

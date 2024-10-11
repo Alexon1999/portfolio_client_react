@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { motion } from 'framer-motion';
+import * as React from "react";
+import { motion } from "framer-motion";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const variants = {
   open: {
@@ -20,7 +20,7 @@ const variants = {
   },
 };
 
-const colors = ['#FF008C', '#D309E1', '#9C1AFF', '#7700FF', '#4400FF'];
+const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
 export const MenuItem = ({ i, link, toggleOpen }) => {
   const style = { border: `2px solid ${colors[i]}` };
@@ -31,7 +31,7 @@ export const MenuItem = ({ i, link, toggleOpen }) => {
       whileTap={{ scale: 0.95 }}>
       {/* <div className='icon-placeholder' style={style}></div> */}
       <div className='text-placeholder' style={style}>
-        <Link onClick={toggleOpen} to={!!link[1] ? '/' + link[1] : '/'}>
+        <Link onClick={toggleOpen} to={link[1]}>
           {link[0]}
         </Link>
       </div>

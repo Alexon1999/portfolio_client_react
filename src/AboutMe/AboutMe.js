@@ -5,12 +5,19 @@ import "./AboutMe.css";
 
 import MyImage from "./images/Alexon.PNG";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const AboutMe = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [theme, setTheme] = useLocalStorage("light");
+
+  const { t } = useTranslation();
+
+  const moreAboutMeWhatIDoAnswer = t("aboutMe.more_about_me.what_i_do_answer", {
+    returnObjects: true,
+  });
 
   const handleChangeTheme = (mode) => () => {
     console.log("clicked");
@@ -22,9 +29,7 @@ const AboutMe = () => {
       <section className='s1'>
         <div className='main-container'>
           <div className='greeting-wrapper'>
-            <h1 className='heading  heading_1'>
-              Bonjour, Je suis Uthayakumar Alexon
-            </h1>
+            <h1 className='heading  heading_1'>{t("aboutMe.title")}</h1>
           </div>
 
           <div className='intro-wrapper'>
@@ -32,7 +37,7 @@ const AboutMe = () => {
               <a
                 className='link_a'
                 aria-label="Retour à la page d'accueil"
-                onClick={() => history.push("/")}>
+                onClick={() => navigate("/")}>
                 <div className='dots-wrapper'>
                   <div id='dot-1' className='browser-dot'></div>
                   <div id='dot-2' className='browser-dot'></div>
@@ -42,10 +47,8 @@ const AboutMe = () => {
 
               <ul id='navigation'>
                 <li>
-                  <a
-                    className='link_a'
-                    onClick={() => history.push("/contact")}>
-                    Contact
+                  <a className='link_a' onClick={() => navigate("/contact")}>
+                    {t("aboutMe.contact_link_text")}
                   </a>
                 </li>
               </ul>
@@ -65,7 +68,7 @@ const AboutMe = () => {
                   margin: "1.7rem 0rem 0.5rem",
                 }}
                 className='heading  heading_5'>
-                Personalisez le Thème
+                {t("aboutMe.customize_theme.title")}
               </h5>
 
               <div id='theme-options-wrapper'>
@@ -92,9 +95,7 @@ const AboutMe = () => {
               </div>
 
               <p id='settings-note'>
-                *Votre thème sera enrgistré pour
-                <br />
-                votre prochain visite
+                *{t("aboutMe.customize_theme.description")}
               </p>
             </div>
 
@@ -103,8 +104,10 @@ const AboutMe = () => {
                 <div id='preview'>
                   <div id='corner-tl' className='corner'></div>
                   <div id='corner-tr' className='corner'></div>
-                  <h3 className='heading  heading_3'>Qu'est ce que je fais?</h3>
-                  <p>Je suis Développeur Full Stack & DevOps</p>
+                  <h3 className='heading  heading_3'>
+                    {t("aboutMe.what_i_do.title")}
+                  </h3>
+                  <p>{t("aboutMe.what_i_do.answer")}</p>
                   <div id='corner-br' className='corner'></div>
                   <div id='corner-bl' className='corner'></div>
                 </div>
@@ -118,60 +121,49 @@ const AboutMe = () => {
         <div className='main-container'>
           <div className='about-wrapper'>
             <div className='about-me'>
-              <h4 className='heading  heading_4'>Plus à propos de moi</h4>
+              <h4 className='heading  heading_4'>
+                {t("aboutMe.more_about_me.title")}
+              </h4>
+
+              <p>{t("aboutMe.more_about_me.description")}</p>
 
               <p>
-                Je me spécialise dans le développement full stack, le DevOps, et
-                les technologies cloud. Mon expertise couvre tout le cycle de
-                vie du développement logiciel, de la collecte des besoins à la
-                conception de systèmes, en passant par la modélisation de bases
-                de données, le développement d'API backend et d'interfaces
-                frontend. J'ai également de l'expérience en analyse et la
-                science des données, ainsi que dans la mise en place de
-                pipelines CI/CD et le monitoring d'infrastructures cloud, en
-                utilisant des outils DevOps pour optimiser et gérer efficacement
-                les environnements cloud.
-              </p>
-
-              <p>
-                🔍 Ce que je fais :
+                🔍 {t("aboutMe.more_about_me.what_i_do")} :
                 <ul>
-                  <li>- Développement Full Stack</li>
-                  <li>- DevOps</li>
-                  <li>- Analyse de données et Data Science</li>
+                  {moreAboutMeWhatIDoAnswer.map((item, index) => (
+                    <li key={index}>- {item}</li>
+                  ))}
                 </ul>
               </p>
 
               <hr />
 
-              <h4 className='heading heading_4'>Mon Objectif</h4>
+              <h4 className='heading heading_4'>{t("aboutMe.myGoal.title")}</h4>
 
+              <p>{t("aboutMe.myGoal.description_1")}</p>
               <p>
-                Toujours en quête de nouveaux défis, je cherche constamment à
-                progresser dans ma carrière.
-              </p>
-              <p>
-                N'hésitez pas à consulter mon profil GitHub ou mon CV pour
-                découvrir certains de mes projets.
+                {t("aboutMe.myGoal.description_2")}
                 <a
                   className='link_a'
                   style={{ marginLeft: "1rem" }}
                   target='_blank'
                   href='AlexonUthayakumar.pdf'>
-                  Voir mon CV
+                  {t("aboutMe.myGoal.view_my_resume_text")}
                 </a>{" "}
                 <span>| </span>
                 <a
                   href='https://github.com/Alexon1999'
                   target='_blank'
                   aria-label='github'>
-                  Voir Github
+                  {t("aboutMe.myGoal.view_my_github_text")}
                 </a>
               </p>
 
               <hr />
 
-              <h4 className='heading heading_4'>Mes Compétences</h4>
+              <h4 className='heading heading_4'>
+                {t("aboutMe.mySkills.title")}
+              </h4>
 
               <div id='skills'>
                 <ul>
