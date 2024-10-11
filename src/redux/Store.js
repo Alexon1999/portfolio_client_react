@@ -1,6 +1,6 @@
-import { createStore } from 'redux';
+import { createStore } from "redux";
 
-import AllReducer from './AllReducer';
+import AllReducer from "./AllReducer";
 
 const Store = createStore(
   AllReducer,

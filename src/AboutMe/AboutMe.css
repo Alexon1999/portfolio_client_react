@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
 .about-me p,
 .about-me li,
@@ -7,7 +7,7 @@
 .about-me input,
 .about-me textarea {
   color: var(--secondaryText);
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 .link_a {
@@ -41,7 +41,7 @@
 
 .about-me .heading {
   color: var(--mainText) !important;
-  font-family: 'Russo One', sans-serif !important;
+  font-family: "Russo One", sans-serif !important;
   font-weight: 500 !important;
 }
 
@@ -81,8 +81,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    'nav-wrapper nav-wrapper'
-    'left-column right-column';
+    "nav-wrapper nav-wrapper"
+    "left-column right-column";
 }
 
 .nav-wrapper {
@@ -195,7 +195,7 @@
 }
 
 #settings-note {
-  font-size: 12px;
+  font-size: 8px;
   font-style: italic;
   text-align: center;
 }
@@ -371,9 +371,9 @@
   .intro-wrapper {
     grid-template-columns: 1fr;
     grid-template-areas:
-      'nav-wrapper'
-      'left-column'
-      'right-column';
+      "nav-wrapper"
+      "left-column"
+      "right-column";
   }
 
   .heading_1 {

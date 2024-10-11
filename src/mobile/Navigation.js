@@ -1,6 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
+import { useTranslation } from "react-i18next";
 
 const variants = {
   open: {
@@ -11,17 +12,22 @@ const variants = {
   },
 };
 
-export const Navigation = ({ toggleOpen }) => (
-  <motion.ul variants={variants}>
-    {Object.entries(items).map(([i, link]) => (
-      <MenuItem toggleOpen={toggleOpen} i={i} key={i} link={link} />
-    ))}
-  </motion.ul>
-);
+export const Navigation = ({ toggleOpen }) => {
+  const { t } = useTranslation();
 
-const items = {
-  // 0: ['Travail'],
-  0: ["Projets"],
-  1: ["A propos de moi", "about"],
-  2: ["Contact", "contact"],
+  return (
+    <motion.ul variants={variants}>
+      <MenuItem toggleOpen={toggleOpen} link={[t("nav.projects"), "/"]} i={0} />
+      <MenuItem
+        toggleOpen={toggleOpen}
+        link={[t("nav.aboutMe"), "/about"]}
+        i={1}
+      />
+      <MenuItem
+        toggleOpen={toggleOpen}
+        link={[t("nav.contact"), "/contact"]}
+        i={2}
+      />
+    </motion.ul>
+  );
 };

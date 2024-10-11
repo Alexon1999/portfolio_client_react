@@ -9,6 +9,7 @@ import GithubCalendar from "github-calendar";
 import FlipMove from "react-flip-move";
 import useApi from "./hooks/useApi";
 import { Spinner } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const Projects = () => {
   const heading = useRef(null);
@@ -18,6 +19,7 @@ const Projects = () => {
   const [orderBy, setOrderBy] = useState("updatedAt");
   const [order, setOrder] = useState("desc");
   const [projectsTransformed, setProjectsTransformed] = useState([]);
+  const { t } = useTranslation();
 
   const queryParams = useMemo(() => {
     const params = {};
@@ -118,7 +120,7 @@ const Projects = () => {
       <div className='work_section-container'>
         <motion.h1 ref={heading} className='heading'>
           {/* Mes Travails */}
-          Mes Projets
+          {t("projects.title")}
         </motion.h1>
 
         <div className='work_heading'>
@@ -149,7 +151,7 @@ const Projects = () => {
             <motion.button
               onClick={handleClick("")}
               className='btn work_btn btn_primary'>
-              Tous
+              {t("projects.category_all_btn_text")}
             </motion.button>
             {categories?.map((category) => (
               <motion.button

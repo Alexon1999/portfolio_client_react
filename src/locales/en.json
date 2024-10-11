@@ -1,3 +1,94 @@
 {
-  "introduction": "Hello"
+  "nav": {
+    "projects": "Projects",
+    "aboutMe": "About Me",
+    "contact": "Contact"
+  },
+  "home": {
+    "hello": "Hello",
+    "introduction": "I am Alexon",
+    "activities": ["Full Stack Developer", "DevOps"],
+    "description": "I support you throughout the life cycle of your information systems, offering you complete and personalized expertise",
+    "project_btn_text": "View my work",
+    "contact_btn_text": "Contact me",
+    "scroll_down_btn_text": "Scroll Down"
+  },
+  "myActivity": {
+    "activities": [
+      {
+        "title": "Project Management",
+        "description": "I manage the planning, coordination, and monitoring of your projects, ensuring their success within deadlines and budgets."
+      },
+      {
+        "title": "Consulting",
+        "description": "I help you define your needs and choose the most appropriate solutions for your strategic objectives."
+      },
+      {
+        "title": "Design",
+        "description": "I design robust and scalable information systems, focusing on alignment with your business processes and performance optimization."
+      },
+      {
+        "title": "Implementation",
+        "description": "I develop and implement technical solutions, ensuring their seamless integration into your existing environment."
+      },
+      {
+        "title": "Maintenance",
+        "description": "I ensure the sustainability and evolution of your information systems by providing reactive technical support and preventing malfunctions."
+      },
+      {
+        "title": "Production and Operations",
+        "description": "I support the deployment and smooth functioning of your systems, optimizing their performance and ensuring maximum availability."
+      }
+    ]
+  },
+  "projects": {
+    "title": "My Projects",
+    "category_all_btn_text": "All"
+  },
+  "projectDetail": {
+    "view_page_btn_text": "View Page",
+    "view_description_btn_text": "View Description",
+    "hide_description_btn_text": "Hide Description"
+  },
+  "aboutMe": {
+    "title": "Hello, I am Alexon UTHAYAKUMAR",
+    "contact_link_text": "Contact",
+    "what_i_do": {
+      "title": "What I do?",
+      "answer": "I am Full Stack Developer & DevOps"
+    },
+    "customize_theme": {
+      "title": "Customize Theme",
+      "description": "Your theme will be recorded for your next visit"
+    },
+    "more_about_me": {
+      "title": "More About Me",
+      "description": "I specialise in full stack development, DevOps and cloud technologies. My expertise covers the entire software development lifecycle, from requirements gathering to systems design, including database modelling, backend API development and frontend interfaces. I also have experience in analysis and data science, as well as in setting up CI/CD pipelines and monitoring cloud infrastructures, using DevOps tools to optimise and manage cloud environments effectively.",
+      "what_i_do": "What I do",
+      "what_i_do_answer": [
+        "Full Stack Development",
+        "DevOps",
+        "Data Analysis and Data Science"
+      ]
+    },
+    "myGoal": {
+      "title": "My Goal",
+      "description_1": "I'm always on the lookout for new challenges and am constantly looking to progress in my career.",
+      "description_2": "Feel free to have a look at my GitHub profile or my CV to discover some of my projects.",
+      "view_my_resume_text": "View my Resume",
+      "view_my_github_text": "View my GitHub"
+    },
+    "mySkills": {
+      "title": "My Skills"
+    }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "form": {
+      "name": "Your Name",
+      "email": "Email",
+      "message": "Message",
+      "submit_btn_text": "Send"
+    }
+  }
 }

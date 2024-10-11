@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import NavMobile from "./mobile/NavMobile";
 import LanguageSwitcher from "./languageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const nav = useRef(null);
+  const { t } = useTranslation();
 
   const location = useLocation();
 
@@ -71,7 +73,7 @@ const Navbar = () => {
               // className='btn_work'
               className='btn btn_third'>
               {/* Travail */}
-              Projets
+              {t("nav.projects")}
             </a>
           )}
 
@@ -80,7 +82,7 @@ const Navbar = () => {
             className={`btn btn_third  ${
               location.pathname === "/about" ? "btn_primary" : ""
             }`}>
-            A propos de moi
+            {t("nav.aboutMe")}
           </Link>
 
           <Link
@@ -89,7 +91,7 @@ const Navbar = () => {
             className={`btn btn_third ${
               location.pathname === "/contact" ? "btn_primary" : ""
             }`}>
-            Contact
+            {t("nav.contact")}
           </Link>
         </nav>
 

@@ -33,9 +33,6 @@ function LanguageSwitcher() {
   return (
     <Box className='language-switcher' sx={{ minWidth: 100 }}>
       <FormControl fullWidth size='small'>
-        <InputLabel id='language-select-label' sx={{ color: "#fff" }}>
-          Language
-        </InputLabel>
         <Select
           labelId='language-select-label'
           id='language-select'

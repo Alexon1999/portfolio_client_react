@@ -4,14 +4,15 @@ import mobile from "./imgs/mobile.png";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-
-const activities = ["Développeur Full Stack", "DevOps"];
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const navigate = useNavigate();
   const [activityIndex, setActivityIndex] = useState(0);
   const [headingAnimationComplete, setHeadingAnimationComplete] =
     useState(false);
+  const { t } = useTranslation();
+  const activities = t("home.activities", { returnObjects: true });
 
   const handleHlick = (e) => {
     e.preventDefault();
@@ -47,9 +48,9 @@ const Home = () => {
           transition={{ ease: "easeIn", duration: 1 }}
           onAnimationComplete={() => setHeadingAnimationComplete(true)}
           className='heading'>
-          <p className='heading__greeting'>Bonjour !</p>
+          <p className='heading__greeting'>{t("home.hello")} !</p>
           <p className='heading__presentation'>
-            Je suis Alexon,{" "}
+            {t("home.introduction")},{" "}
             <AnimatePresence mode='wait'>
               <motion.span
                 className='heading__presentation__activity'
@@ -62,11 +63,7 @@ const Home = () => {
               </motion.span>
             </AnimatePresence>
           </p>
-          <h1 className='heading__text'>
-            Je vous accompagne tout au long du cycle de vie de vos systèmes
-            d'information, en vous offrant une expertise complète et
-            personnalisée
-          </h1>
+          <h1 className='heading__text'>{t("home.description")}</h1>
         </motion.div>
 
         <div className='navigation'>
@@ -82,7 +79,7 @@ const Home = () => {
             href='#projects'
             onClick={handleHlick}
             className='btn btn_primary'>
-            Reagardez mes travaux
+            {t("home.project_btn_text")}
           </motion.a>
 
           <motion.a
@@ -100,7 +97,7 @@ const Home = () => {
             }}
             id='contact'
             className='btn btn_secondary'>
-            Contactez moi
+            {t("home.contact_btn_text")}
           </motion.a>
         </div>
       </div>
@@ -111,7 +108,9 @@ const Home = () => {
         </div>
 
         <div className='mouse-text'>
-          <span className='mouse-text-content'>scroll down</span>
+          <span className='mouse-text-content'>
+            {t("home.scroll_down_btn_text")}
+          </span>
         </div>
       </div>
 
