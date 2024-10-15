@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Box } from "@mui/material";
 
 const NotFoundPage = () => {
   const { t } = useTranslation(); // Access translations
