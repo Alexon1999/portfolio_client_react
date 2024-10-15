@@ -1045,3 +1045,61 @@ section.home_section .mobile_container {
 .calendar table {
   border-collapse: separate;
 }
+
+/* General styling for the not-found page */
+.not_found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh; /* Make sure it covers the full viewport height */
+}
+
+.icon-container {
+  font-size: 4rem;
+  color: #ff4c4c; /* You can choose any color for the icon */
+  margin-bottom: 20px;
+}
+
+.not_found h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.not_found p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.not_found a {
+  font-size: 1.2rem;
+  color: #007bff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.not_found a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  /* Adjust font sizes for smaller screens */
+  .not_found h1 {
+    font-size: 2.5rem;
+  }
+
+  .not_found p {
+    font-size: 1.2rem;
+  }
+
+  .not_found a {
+    font-size: 1rem;
+  }
+}

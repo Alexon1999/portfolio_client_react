@@ -90,5 +90,10 @@
       "message": "Message",
       "submit_btn_text": "Envoyer"
     }
+  },
+  "notFound": {
+    "title": "404",
+    "description": "Page non trouvée",
+    "homeLinkText": "Retour à l'accueil"
   }
 }

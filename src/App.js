@@ -15,6 +15,7 @@ import MyActivity from "./MyActivity";
 import ScrollToTop from "./ScrollToTop";
 import { routeTitles } from "./routeTitles";
 import { logPageViewAnalytics } from "./utils/analytics";
+import NotFoundPage from "./NotFoundPage";
 
 function App() {
   const location = useLocation();
@@ -52,6 +53,9 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/about' element={<AboutMe />} />
         <Route path='/project/:id' element={<ProjectDetail />} />
+
+        {/* 404 Route - Catch-all */}
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
 
       <Footer />
