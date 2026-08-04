@@ -7,7 +7,7 @@ const Project = forwardRef(({ project, getProjectDetail }, ref) => {
         {/* // * https://my-portfolio-alexon.herokuapp.com/uploads/amazon.png` */}
         {/* ex : project.imgUrl = "/uploads/amazon.png" */}
         {/* <img src={baseUrl + project.imgUrl} alt='' /> */}
-        <img src={project.imgUrl} alt='' />
+        <img src={process.env.REACT_APP_API_URL + project.imgUrl} alt='' />
       </div>
       <div className='card-content'>
         <h2>{project.name}</h2>

@@ -85,9 +85,6 @@ const Project = () => {
   });
   const noWebpage = [
     "Ebook",
-    "Zoom_clone",
-    "Top's_10 App",
-    "Youtube Clone",
     "Projet GSB",
   ];
   const { t } = useTranslation();
@@ -118,9 +115,14 @@ const Project = () => {
   }, [projectDetails]);
 
   useEffect(() => {
-    if (noWebpage.includes(data?.name)) {
+    if (!data) return;
+    if (noWebpage.includes(data?.name) || !data?.link) {
       setShowWebPage(false);
+      return;
     }
+    fetch(data.link, { method: "HEAD", mode: "no-cors" })
+      .then(() => setShowWebPage(true))
+      .catch(() => setShowWebPage(false));
   }, [data]);
 
   const handleCollapse = () => {
@@ -198,7 +200,7 @@ const Project = () => {
             </p> */}
                 <img
                   className='projectDetail__Image'
-                  src={data?.imgUrl}
+                  src={process.env.REACT_APP_API_URL + data?.imgUrl}
                   alt={data?.name}
                 />
               </iframe>
@@ -210,7 +212,7 @@ const Project = () => {
               // />
               <img
                 className='projectDetail__Image'
-                src={data?.imgUrl}
+                src={process.env.REACT_APP_API_URL + data?.imgUrl}
                 alt={data?.name}
               />
             )}
